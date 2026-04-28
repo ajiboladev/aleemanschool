@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+      <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>School Anthem - Aleeman School of Science & Arabic Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+         <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary-green: #2E8B57;
+            --dark-green: #006400;
+            --light-green: #90EE90;
+            --accent-green: #32CD32;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --text-dark: #222222;
+            --text-light: #666666;
+            --gold: #D4AF37;
+            --shadow: 0 10px 30px rgba(0, 100, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Back Arrow - Fixed Position */
+        .back-arrow {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+            border: 2px solid var(--white);
+        }
+
+        .back-arrow:hover {
+            background: var(--dark-green);
+            transform: translateX(-5px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 100, 0, 0.4);
+        }
+
+        .back-arrow i {
+            font-size: 1.4rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 80px 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: var(--white);
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .page-title {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            animation: slideDown 0.8s ease-out 0.2s both;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideDown 0.8s ease-out 0.4s both;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Anthem Content */
+        .anthem-content {
+            padding: 60px 40px;
+        }
+
+        /* Arabic Section - Two Column Layout */
+        .arabic-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 50px;
+            border: 2px solid var(--light-green);
+            box-shadow: 0 10px 30px rgba(46, 139, 87, 0.08);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arabic-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(46, 139, 87, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--dark-green);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--light-green);
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .section-title i {
+            margin-right: 15px;
+            color: var(--primary-green);
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            line-height: 2.5;
+            text-align: right;
+            direction: rtl;
+            color: var(--dark-green);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 60px;
+            position: relative;
+        }
+
+        .arabic-couplet {
+            display: contents;
+        }
+
+        .arabic-line {
+            padding: 15px 20px;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 3px solid transparent;
+            background: rgba(255, 255, 255, 0.7);
+            position: relative;
+        }
+
+        .arabic-line:hover {
+            background: linear-gradient(to left, rgba(46, 139, 87, 0.08), rgba(46, 139, 87, 0.02));
+            border-right-color: var(--gold);
+            transform: translateX(-8px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.1);
+        }
+
+        .arabic-line::before {
+            content: '◆';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .arabic-line:hover::before {
+            opacity: 1;
+        }
+
+        /* Translation Section */
+        .translation-section {
+            background: linear-gradient(135deg, var(--off-white), #ffffff);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid var(--light-green);
+            box-shadow: 0 10px 30px rgba(46, 139, 87, 0.08);
+            position: relative;
+        }
+
+        .translation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(46, 139, 87, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .english-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-dark);
+        }
+
+        .english-paragraph {
+            margin-bottom: 35px;
+            padding: 25px 30px;
+            background: var(--white);
+            border-radius: 16px;
+            border-left: 5px solid var(--primary-green);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .english-paragraph:hover {
+            transform: translateX(8px);
+            border-left-color: var(--gold);
+            box-shadow: 0 8px 25px rgba(46, 139, 87, 0.12);
+        }
+
+        .english-paragraph::before {
+            content: '❝';
+            position: absolute;
+            left: 8px;
+            top: 15px;
+            font-size: 3rem;
+            color: var(--light-green);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        /* Audio Player */
+        .audio-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            padding: 60px 40px;
+            color: var(--white);
+            text-align: center;
+            border-top: 5px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audio-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .audio-player {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .audio-title {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        .audio-title i {
+            margin-right: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .audio-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--primary-green);
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .audio-btn:hover {
+            background: var(--gold);
+            color: var(--white);
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .audio-btn:active {
+            transform: scale(1.05);
+        }
+
+        .audio-btn.play-btn {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+
+        .progress-container {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), #f4d03f);
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .volume-control i {
+            font-size: 1.3rem;
+        }
+
+        .volume-slider {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .volume-level {
+            height: 100%;
+            background: var(--white);
+            width: 70%;
+            border-radius: 3px;
+            transition: width 0.2s ease;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            padding: 60px 40px;
+            background: var(--off-white);
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 5px solid var(--primary-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(46, 139, 87, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(46, 139, 87, 0.15);
+            border-top-color: var(--gold);
+        }
+
+        .info-card:hover::before {
+            width: 150px;
+            height: 150px;
+        }
+
+        .info-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 18px;
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .info-card i {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover i {
+            color: var(--gold);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Core Values Section */
+        .values-section {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--white), var(--off-white));
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(46, 139, 87, 0.1);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover .value-icon {
+            background: linear-gradient(135deg, var(--gold), #f4d03f);
+            transform: rotate(360deg);
+        }
+
+        .value-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+
+        .value-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: linear-gradient(135deg, var(--dark-green), #003d00);
+            color: var(--white);
+            padding: 50px 40px;
+            text-align: center;
+            border-top: 5px solid var(--gold);
+            position: relative;
+        }
+
+        .footer-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.1); 
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .arabic-text {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .back-arrow {
+                top: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .anthem-content,
+            .info-cards,
+            .values-section {
+                padding: 40px 25px;
+            }
+
+            .arabic-section,
+            .translation-section,
+            .audio-player {
+                padding: 30px 25px;
+            }
+
+            .arabic-text {
+                font-size: 1.4rem;
+                line-height: 2.2;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .audio-controls {
+                gap: 15px;
+            }
+
+            .audio-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .audio-btn.play-btn {
+                width: 65px;
+                height: 65px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 60px 20px 40px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .arabic-text {
+                font-size: 1.3rem;
+                gap: 10px;
+            }
+
+            .english-paragraph {
+                padding: 20px 25px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Arrow -->
+    <div class="back-arrow" onclick="window.history.back()" title="Go Back">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="header-icon">
+                <i class="fas fa-book-quran"></i>
+            </div>
+            <h1 class="page-title">دار الإيمان</h1>
+            <p class="page-subtitle">The Official Anthem of Aleeman School of Science & Arabic Study</p>
+        </header>
+
+        <!-- Anthem Content -->
+        <main class="anthem-content">
+            <!-- Arabic Text Section -->
+            <section class="arabic-section">
+                <h2 class="section-title">
+                    <i class="fas fa-star-and-crescent"></i>
+                    النشيد الوطني للمدرسة
+                </h2>
+                <div class="arabic-text">
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">دار الإيمان دار الإيمان</div>
+                        <div class="arabic-line">دار التقوى والإيمان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">دار العلم بالأركان</div>
+                        <div class="arabic-line">دار الرشد والعرفان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">فيها علم بالإتقان</div>
+                        <div class="arabic-line">فيها حفظ للقرآن</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">فيها فقه بالإيقان</div>
+                        <div class="arabic-line">فيها حظ للغلمان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">نِعْمَ يا صاح دار الإيمان</div>
+                        <div class="arabic-line">طابت دارًا للشجعان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">حقًا حقًا صدقًا صدقًا</div>
+                        <div class="arabic-line">فيها فقه بالإيقان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">رب جهول في الظلمات</div>
+                        <div class="arabic-line">رب ملول أو كسلان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">صار إمامًا في العرفان</div>
+                        <div class="arabic-line">في ذي الدار بالرجحان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">احفظ ربي ذا العرفان</div>
+                        <div class="arabic-line">شيخي دومًا في البرهان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">ذلك شيخي سليمان</div>
+                        <div class="arabic-line">أموجيًا ذو الإتقان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">أسس حقًا دار الإيمان</div>
+                        <div class="arabic-line">طلبًا نيلاً للرضوان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">حقق ربي أمانيه</div>
+                        <div class="arabic-line">يا ذا الفضل والغفران</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">زدنا علمًا بالخيرات</div>
+                        <div class="arabic-line">زدنا فهمًا للفرقان</div>
+                    </div>
+                    <div class="arabic-couplet">
+                        <div class="arabic-line">صلِّ وسلم ربي دومًا</div>
+                        <div class="arabic-line">للمختار والأعوان</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Translation Section -->
+            <section class="translation-section">
+                <h2 class="section-title">
+                    <i class="fas fa-language"></i>
+                    English Translation
+                </h2>
+                <div class="english-text">
+                    <div class="english-paragraph">
+                        The Abode of Faith, the Abode of Faith<br>
+                        The abode of knowledge of the pillars<br>
+                        Within it is knowledge with mastery<br>
+                        Within it is jurisprudence with certainty<br>
+                        How excellent, my companion, is the Abode of Faith<br>
+                        Truly, truly — honest and sincere<br>
+                        One once ignorant in the depths of darkness<br>
+                        Became a leader in true understanding<br>
+                        My Lord, preserve the possessor of gnosis<br>
+                        That is my shaykh, Sulaymān<br>
+                        He truly founded the Abode of Faith<br>
+                        My Lord fulfilled his hopes<br>
+                        Increase us in knowledge through good deeds<br>
+                        Send prayers and peace, my Lord, always
+                    </div>
+                    
+                    <div class="english-paragraph">
+                        The Abode of God-consciousness and Faith<br>
+                        The abode of guidance and inner knowledge<br>
+                        Within it is the memorization of the Qur'an<br>
+                        Within it is a noble share for the youth<br>
+                        A blessed home for the brave<br>
+                        Within it is jurisprudence with certainty<br>
+                        Whether weary or inclined to laziness<br>
+                        In this abode there is success and advantage<br>
+                        My shaykh is ever firm in proof<br>
+                        A masterful guide of precision<br>
+                        Seeking attainment of divine pleasure<br>
+                        O Possessor of bounty and forgiveness<br>
+                        Increase us in understanding of the Criterion (Qur'an)<br>
+                        For the Chosen One and his companions
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Audio Player -->
+        <section class="audio-section">
+            <div class="audio-player">
+                <h3 class="audio-title"><i class="fas fa-music"></i> Listen to the Anthem</h3>
+                <div class="audio-controls">
+                    <button class="audio-btn" id="rewindBtn" title="Rewind 10s">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button class="audio-btn play-btn pulse" id="playBtn" title="Play/Pause">
+                        <i class="fas fa-play" id="playIcon"></i>
+                    </button>
+                    <button class="audio-btn" id="forwardBtn" title="Forward 10s">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+
+                <div class="volume-control">
+                    <i class="fas fa-volume-up" id="volumeIcon"></i>
+                    <div class="volume-slider" id="volumeSlider">
+                        <div class="volume-level" id="volumeLevel"></div>
+                    </div>
+                </div>
+                <p style="margin-top: 25px; opacity: 0.9; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> Audio file ready to be added
+                </p>
+                <p>
+                   <select name="audioFile" id="audioFileSelect" style="margin-top: 15px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--light-green); background: var(--white); color: var(--text-dark); font-size: 0.95rem; cursor: pointer; margin-left: -12px;">
+    <option value="" disabled selected>Select Different Version</option>
+    <option value="anthem1.mp3">Anthem 1 (Default)</option>
+    <option value="anthem2.mp3">Anthem 2 (Alternate)</option>
+</select>
+                </p>
+            </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="values-section">
+            <h2 class="section-title">
+                <i class="fas fa-heart"></i>
+                Core Values of Aleeman School
+            </h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-quran"></i>
+                    </div>
+                    <h3 class="value-title">Faith</h3>
+                    <p class="value-text">Nurturing strong Islamic faith and character</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="value-title">Knowledge</h3>
+                    <p class="value-text">Pursuing excellence in science and Arabic studies</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="value-title">Piety</h3>
+                    <p class="value-text">Cultivating Allah-consciousness in all actions</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">Community</h3>
+                    <p class="value-text">Building a supportive learning community</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Information -->
+        <section class="info-cards">
+            <div class="info-card">
+                <i class="fas fa-landmark"></i>
+                <h3>About the Anthem</h3>
+                <p>This anthem beautifully encapsulates the essence of Aleeman School, celebrating the journey from ignorance to enlightenment through faith, knowledge, and dedication to Islamic learning.</p>
+            </div>
+            
+            <div class="info-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Educational Philosophy</h3>
+                <p>The anthem reflects our commitment to holistic education that combines Quranic memorization, Islamic jurisprudence, Arabic language mastery, and scientific knowledge.</p>
+            </div>
+            
+            <div class="info-card">
+                <i class="fas fa-mosque"></i>
+                <h3>Spiritual Foundation</h3>
+                <p>Every verse emphasizes the spiritual transformation that occurs within these walls, where students develop both intellectual and moral excellence.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <div class="footer-arabic">معهد العلم والإيمان</div>
+            <p class="footer-quote">"Second To None- The Guiding Principles of Aleeman School"</p>
+            <div class="footer-links">
+                <a href="../about/" class="footer-link">About Us</a>
+                <a href="../academics/" class="footer-link">Academics</a>
+                <a href="../admissions/" class="footer-link">Admissions</a>
+                <a href="../contact/" class="footer-link">Contact</a>
+            </div>
+            <p style="margin-top: 25px; opacity: 0.7; font-size: 0.9rem;">
+                &copy;<span id="year"></span> Aleeman School of Science & Arabic Study. All rights reserved.
+            </p>
+
+            <script>
+                let date = document.getElementById("year");
+                date.innerHTML = new Date().getFullYear()
+            </script>
+        </footer>
+    </div>
+
+   <script>
+    // Audio Player Functionality
+    const audioPlayer = new Audio();
+    let isPlaying = false;
+    
+    // Set DEFAULT audio file
+    audioPlayer.src = '../anthem.mp3'; // Default file
+    
+    // Get DOM elements
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const progressBar = document.getElementById('progressBar');
+    const progressContainer = document.getElementById('progressContainer');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volumeLevel = document.getElementById('volumeLevel');
+    const volumeIcon = document.getElementById('volumeIcon');
+    const rewindBtn = document.getElementById('rewindBtn');
+    const forwardBtn = document.getElementById('forwardBtn');
+    const audioFileSelect = document.getElementById('audioFileSelect');
+
+    // 1. DEFAULT BEHAVIOR: Click play button plays anthem.mp3
+    playBtn.addEventListener('click', () => {
+        // If already playing, pause it
+        if (isPlaying) {
+            audioPlayer.pause();
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
+            playBtn.classList.add('pulse');
+        } else {
+            // Play the current audio (default is anthem.mp3)
+            audioPlayer.play().then(() => {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                playBtn.classList.remove('pulse');
+            }).catch(error => {
+                alert('❌ Error playing audio. Make sure "anthem.mp3" file exists in the same folder.');
+                console.error('Audio error:', error);
+            });
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // 2. OPTIONAL: Select different anthem from dropdown
+    audioFileSelect.addEventListener('change', function() {
+        const selectedValue = this.value;
+        
+        // Pause current audio if playing
+        if (isPlaying) {
+            audioPlayer.pause();
+            isPlaying = false;
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
+            playBtn.classList.add('pulse');
+        }
+        
+        // Set new audio source based on selection
+        if (selectedValue === 'anthem1.mp3') {
+            audioPlayer.src = '../anthem.mp3'; // Your default file
+            alert('🎵 Anthem 1 selected (Default Anthem)');
+        } else if (selectedValue === 'anthem2.mp3') {
+            audioPlayer.src = '../anthem2.mp3'; // Second version
+            alert('🎵 Anthem 2 selected');
+        }
+        
+        // Reset progress bar
+        progressBar.style.width = '0%';
+        currentTimeEl.textContent = '0:00';
+        
+        // Load the new audio
+        audioPlayer.load();
+        
+        // Auto-play the selected anthem
+        audioPlayer.play().then(() => {
+            isPlaying = true;
+            playIcon.classList.remove('fa-play');
+            playIcon.classList.add('fa-pause');
+            playBtn.classList.remove('pulse');
+        }).catch(error => {
+            console.error('Error playing selected anthem:', error);
+        });
+    });
+
+    // 3. Update progress bar (keep this part same)
+    audioPlayer.addEventListener('timeupdate', () => {
+        const currentTime = audioPlayer.currentTime;
+        const duration = audioPlayer.duration || 0;
+        const progressPercent = (currentTime / duration) * 100 || 0;
+        
+        progressBar.style.width = `${progressPercent}%`;
+        currentTimeEl.textContent = formatTime(currentTime);
+        
+        if (duration && !isNaN(duration)) {
+            durationEl.textContent = formatTime(duration);
+        }
+    });
+
+    // 4. Click on progress bar to seek (keep this part same)
+    progressContainer.addEventListener('click', (e) => {
+        if (!audioPlayer.src || audioPlayer.duration === 0) return;
+        
+        const width = progressContainer.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audioPlayer.duration;
+        
+        audioPlayer.currentTime = (clickX / width) * duration;
+    });
+
+    // 5. Volume control (keep this part same)
+    volumeSlider.addEventListener('click', (e) => {
+        const width = volumeSlider.clientWidth;
+        const clickX = e.offsetX;
+        const volume = Math.min(1, Math.max(0, clickX / width));
+        
+        audioPlayer.volume = volume;
+        volumeLevel.style.width = `${volume * 100}%`;
+        
+        if (volume === 0) {
+            volumeIcon.className = 'fas fa-volume-mute';
+        } else if (volume < 0.5) {
+            volumeIcon.className = 'fas fa-volume-down';
+        } else {
+            volumeIcon.className = 'fas fa-volume-up';
+        }
+    });
+
+    // 6. Rewind and forward buttons (keep this part same)
+    rewindBtn.addEventListener('click', () => {
+        if (!audioPlayer.src) return;
+        audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10);
+    });
+
+    forwardBtn.addEventListener('click', () => {
+        if (!audioPlayer.src) return;
+        const duration = audioPlayer.duration || 0;
+        audioPlayer.currentTime = Math.min(duration, audioPlayer.currentTime + 10);
+    });
+
+    // 7. Format time function (keep this part same)
+    function formatTime(seconds) {
+        if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+        
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // 8. Initialize volume (keep this part same)
+    audioPlayer.volume = 0.7;
+    volumeLevel.style.width = '70%';
+
+    // 9. Audio ended event (keep this part same)
+    audioPlayer.addEventListener('ended', () => {
+        isPlaying = false;
+        playIcon.classList.remove('fa-pause');
+        playIcon.classList.add('fa-play');
+        playBtn.classList.add('pulse');
+        progressBar.style.width = '0%';
+        currentTimeEl.textContent = '0:00';
+    });
+
+    // Keep the rest of your scroll animations and loading code...
+    // [Scroll animations code remains the same]
+</script>
+</body>
+</html>

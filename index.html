@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="description" content="Aleeman School of Science & Arabic Study - Quality education combining modern science with Islamic studies">
+    <title>Aleeman School of Science & Arabic Study</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/improvements.css">
+  <link rel="icon" href="aleeman-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+        <!-- ⑦ Open Graph — used by WhatsApp, Facebook, Discord, iMessage previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aleemanschool.vercel.app/" />
+    <meta property="og:site_name" content="JOYIN" />
+    <meta
+      property="og:title"
+      content="Admin Portal — Aleeman School"
+    />
+    <meta
+      property="og:description"
+      content="Aleeman School — Admin Portal. Manage the school, oversee operations, and connect with staff."
+    />
+    <meta
+      property="og:image"
+      content="https://aleemanschool.vercel.app/aleeman-logo.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="aleeman-logo.png" alt="Aleeman School Logo">
+                <span>Aleeman School</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="./about/">About Us</a></li>
+                <li><a href="./academics/">Academics</a></li>
+                <li><a href="./admissions/">Admissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="./anthem/">School Anthem</a></li>
+                <li><a href="./portal/">Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">AL-EEMAN SCHOOL OF SCIENCE & ARABIC STUDIES</h1>
+            <p class="motto fade-in-delay">"Second To None"</p>
+            <div class="hero-buttons fade-in-delay-2">
+                <a href="./admissions/" class="btn btn-primary">Apply Now</a>
+                <a href="./about/" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="welcome-grid">
+                <div class="welcome-image">
+                    <img src="https://th.bing.com/th/id/R.6bda9bfd52df163be5ac37dcfa234ba6?rik=z129Ig3OI48xSg&pid=ImgRaw&r=0" alt="Students Learning" loading="lazy">
+                    <div class="image-overlay">
+                        <div class="stat-badge">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Students</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-content">
+                    <span class="section-label">Welcome to Aleeman School</span>
+                    <h2>Nurturing Minds, Building Character</h2>
+                    <p>At Aleeman School of Science & Arabic Study, we provide a unique educational experience that seamlessly blends modern scientific education with traditional Arabic and Islamic studies. Our comprehensive curriculum prepares students for both academic excellence and moral leadership.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>WAEC/NECO Certified Programs</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Qualified & Experienced Teachers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Modern Learning Facilities</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Islamic Character Development</span>
+                        </div>
+                    </div>
+                    <a href="./about/" class="btn btn-secondary">Discover Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <!-- <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span class="stat-value" data-target="500">0</span>
+                    <span class="stat-title">Students Enrolled</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <span class="stat-value" data-target="35">0</span>
+                    <span class="stat-title">Qualified Teachers</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <span class="stat-value" data-target="98">0</span>
+                    <span class="stat-title">% Success Rate</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <span class="stat-value" data-target="15">0</span>
+                    <span class="stat-title">Years of Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Why Choose Us Section -->
+<section class="why-choose-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Why Aleeman School</span>
+            <h2>Building Future Leaders With Knowledge &amp; Faith</h2>
+            <p>We offer a balanced education that prepares students for success in both worlds</p>
+        </div>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Academic Excellence</h3>
+                <p>Rigorous science &amp; Arabic curriculum delivered by experienced, caring teachers in well-equipped classrooms and labs.</p>
+                <ul class="pillar-points">
+                    <li><i class="fas fa-check"></i> WAEC/NECO Certified</li>
+                    <li><i class="fas fa-check"></i> Small class sizes</li>
+                </ul>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-quran"></i>
+                </div>
+                <h3>Islamic Character</h3>
+                <p>Daily Qur'an memorisation, Hadith studies, and a school culture rooted in respect, honesty, and compassion.</p>
+                <ul class="pillar-points">
+                    <li><i class="fas fa-check"></i> Qualified Islamic scholars</li>
+                    <li><i class="fas fa-check"></i> Morning Adhkar &amp; Salah</li>
+                </ul>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Discipline &amp; Values</h3>
+                <p>We instil self-discipline, punctuality, and strong moral values — producing well-rounded, responsible young adults.</p>
+                <ul class="pillar-points">
+                    <li><i class="fas fa-check"></i> Structured daily routine</li>
+                    <li><i class="fas fa-check"></i> Leadership opportunities</li>
+                </ul>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Holistic Development</h3>
+                <p>Beyond academics — sports, debates, community service, and creative arts help every child discover their potential.</p>
+                <ul class="pillar-points">
+                    <li><i class="fas fa-check"></i> Extracurricular clubs</li>
+                    <li><i class="fas fa-check"></i> Annual inter-house sports</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ========================================
+   WHY CHOOSE US / CORE PILLARS SECTION
+   ======================================== */
+
+.why-choose-section {
+    padding: 5rem 0;
+    background: #f8faf9;
+    position: relative;
+}
+
+.why-choose-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1a5c3e, #2e8b57, #1a5c3e);
+}
+
+/* Section Header */
+.why-choose-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.why-choose-section .section-label {
+    display: inline-block;
+    background: rgba(46, 139, 87, 0.1);
+    color: #2e8b57;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.why-choose-section .section-header h2 {
+    font-size: 2.2rem;
+    color: #1a3c2a;
+    margin-bottom: 0.8rem;
+}
+
+.why-choose-section .section-header p {
+    color: #666;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Pillars Grid */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/* Pillar Card */
+.pillar-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.pillar-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, rgba(46, 139, 87, 0.08), rgba(26, 92, 62, 0.12));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #2e8b57;
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+    transform: scale(1.1);
+}
+
+.pillar-card h3 {
+    font-size: 1.2rem;
+    color: #1a3c2a;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.pillar-card > p {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+/* Pillar Points */
+.pillar-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.pillar-points li {
+    font-size: 0.82rem;
+    color: #444;
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pillar-points li i {
+    color: #2e8b57;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 992px) {
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .why-choose-section .section-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .pillar-card {
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .pillar-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+}
+</style>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Programs</span>
+                <h2>Dual Excellence in Education</h2>
+                <p>Choose from our comprehensive programs designed to shape well-rounded individuals</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science Program</h3>
+                    <p>Comprehensive science education covering Physics, Chemistry, Biology, Mathematics, and Computer Science with modern laboratory facilities.</p>
+                    <ul class="program-highlights">
+                        <li><i class="fas fa-star"></i> WAEC/NECO Preparation</li>
+                        <li><i class="fas fa-star"></i> Practical Laboratory Work</li>
+                        <li><i class="fas fa-star"></i> STEM Focus</li>
+                    </ul>
+                    <a href="./academics/#science" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="program-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="program-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Combined Program</h3>
+                    <p>The perfect blend of scientific education and Islamic studies, preparing students for success in both worlds.</p>
+                    <ul class="program-highlights">
+                        <li><i class="fas fa-star"></i> Science + Arabic Integration</li>
+                        <li><i class="fas fa-star"></i> Character Development</li>
+                        <li><i class="fas fa-star"></i> Balanced Curriculum</li>
+                    </ul>
+                    <a href="./academics/#combined" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-quran"></i>
+                    </div>
+                    <h3>Arabic & Islamic Studies</h3>
+                    <p>In-depth study of Qur'an, Hadith, Arabic language, and Islamic jurisprudence with experienced Islamic scholars.</p>
+                    <ul class="program-highlights">
+                        <li><i class="fas fa-star"></i> Qur'an Memorization</li>
+                        <li><i class="fas fa-star"></i> Arabic Fluency</li>
+                        <li><i class="fas fa-star"></i> Islamic Knowledge</li>
+                    </ul>
+                    <a href="./academics/#arabic" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <h2>Quick Access</h2>
+            <div class="links-grid">
+                <a href="./academics/#curriculum" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Curriculum</h3>
+                    <p>Explore our academic programs</p>
+                </a>
+                <a href="./about/#principal" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Principal's Message</h3>
+                    <p>From our school leader</p>
+                </a>
+                <a href="./admissions/#requirements" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Admission Requirements</h3>
+                    <p>Join our school community</p>
+                </a>
+                <a href="./academics/#calendar" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Academic Calendar</h3>
+                    <p>Important dates & events</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Testimonials</span>
+                <h2>What Parents & Students Say</h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p>"Aleeman School has been instrumental in shaping my child's academic and spiritual growth. The balanced curriculum is exactly what we were looking for."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Hajiya Fatima Ahmed</h4>
+                            <span>Parent, SS2 Student</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p>"The teachers are dedicated and the Islamic environment helps instill good values in students. I'm proud to be part of Aleeman School."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Musa Ibrahim</h4>
+                            <span>Student, SS3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p>"Excellent combination of modern education and Islamic teachings. The school has exceeded our expectations in every way."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Alhaji Yusuf Mohammed</h4>
+                            <span>Parent, JSS3 Student</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Join Aleeman School?</h2>
+                <p>Applications are now open for the 2025/2026 academic session. Secure your child's future with quality education rooted in faith and excellence.</p>
+                <div class="cta-buttons">
+                    <a href="./admissions/" class="btn btn-light">Apply for Admission</a>
+                    <a href="./contact/" class="btn btn-outline-light">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get in Touch</span>
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p>+234 801 234 5678</p>
+                        <p>+234 802 345 6789</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>info@aleemanschool.edu.ng</p>
+                        <p>admissions@aleemanschool.edu.ng</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Address</h4>
+                        <p>Aleeman School Campus</p>
+                        <p>Port Harcourt, Rivers State</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Office Hours</h4>
+                        <p>Monday - Friday</p>
+                        <p>8:00 AM - 4:00 PM</p>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="aleeman-logo.png" alt="Aleeman School">
+                        <h3>Aleeman School</h3>
+                    </div>
+                    <p>School of Science and Arabic Study</p>
+                    <p class="footer-tagline">"Building Future Leaders with Knowledge and Faith"</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="./about/">About Us</a></li>
+                        <li><a href="./academics/">Academic Programs</a></li>
+                        <li><a href="./admissions/">Admissions</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="./contact/">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Ibadan, Oyo State</li>
+                        <li><i class="fas fa-phone"></i> +234 801 234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@aleemanschool.edu.ng</li>
+                        <li><i class="far fa-clock"></i> Mon-Fri: 7:00 AM - 4:30 PM</li>
+                    </ul>
+                </div>
+                <!-- <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates and news</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div> -->
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; <span id="currentYear"></span> Aleeman School. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+    let date = document.getElementById("currentYear");
+    date.innerHTML = new Date().getFullYear();
+</script>
+
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

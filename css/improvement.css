@@ -1,0 +1,568 @@
+/* ========================================
+   CRITICAL IMPROVEMENTS & FIXES
+======================================== */
+
+/* Smooth scrolling for entire page */
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent initial flash */
+body {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+/* Mobile menu fix */
+.nav-menu {
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu.active {
+    left: 0 !important;
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Better scroll behavior */
+* {
+    scroll-margin-top: 80px;
+}
+
+/* Improved hero animations - slower and more readable */
+.hero-content > * {
+    animation-duration: 1.2s !important;
+    animation-fill-mode: both;
+}
+
+.fade-in {
+    animation: fadeInSlow 1.2s ease-out;
+}
+
+.fade-in-delay {
+    animation: fadeInSlow 1.2s ease-out 0.4s both;
+}
+
+.fade-in-delay-2 {
+    animation: fadeInSlow 1.2s ease-out 0.8s both;
+}
+
+@keyframes fadeInSlow {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Remove parallax effect - causes reading issues */
+.hero {
+    transform: none !important;
+}
+
+/* Better stat counter animation */
+.stat-value {
+    transition: none;
+    will-change: auto;
+}
+
+/* Smooth transitions for interactive elements */
+button, a, input, select, textarea {
+    transition: all 0.3s ease;
+}
+
+/* FAQ accordion smooth animation */
+.faq-answer {
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px;
+}
+
+/* Loading state for buttons */
+button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Better focus states for accessibility */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 2px solid #2E8B57;
+    outline-offset: 2px;
+}
+
+/* Skip to main content link for accessibility */
+.skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+}
+
+.skip-to-main:focus {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    background: #2E8B57;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}
+
+/* Improve mobile touch targets */
+@media (max-width: 767px) {
+    a, button, input, select {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Better notification positioning on mobile */
+@media (max-width: 767px) {
+    .notification {
+        top: 80px !important;
+    }
+}
+
+/* Prevent layout shift */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Better loading states */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Improved scroll performance */
+.hero, .page-header {
+    will-change: auto;
+    transform: translateZ(0);
+}
+
+/* Fix for iOS momentum scrolling */
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Better mobile menu overlay */
+@media (max-width: 767px) {
+    .nav-menu.active::before {
+        content: '';
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: -1;
+    }
+}
+
+/* Prevent text selection on buttons */
+button {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Better image loading */
+img[data-src] {
+    background: #f5f5f5;
+    min-height: 200px;
+}
+
+/* Smooth reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Form validation states */
+input.error, select.error, textarea.error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
+}
+
+input.success, select.success, textarea.success {
+    border-color: #2E8B57 !important;
+    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1) !important;
+}
+
+/* Better tooltip/error positioning */
+.field-error {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.js-loading * {
+    transition: none !important;
+}
+
+/* Better print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    a[href]:after {
+        content: none !important;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-content > * {
+        animation: none !important;
+    }
+}
+
+/* Better performance for animations */
+.stat-card, .program-card, .value-card, .link-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.stat-card:hover, .program-card:hover, .value-card:hover, .link-card:hover {
+    will-change: auto;
+}
+
+/* Fix z-index issues */
+.navbar {
+    z-index: 1000;
+}
+
+.success-modal, .notification {
+    z-index: 10000;
+}
+
+.scroll-top {
+    z-index: 999;
+}
+
+/* Better mobile spacing */
+@media (max-width: 767px) {
+    section {
+        padding: 4rem 0 !important;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+/* Prevent horizontal scroll */
+body {
+    overflow-x: hidden;
+}
+
+/* Better button active states */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Improve tap highlight color on mobile */
+* {
+    -webkit-tap-highlight-color: rgba(46, 139, 87, 0.2);
+}
+
+/* Better table responsiveness */
+@media (max-width: 767px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Loading spinner */
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Better modal backdrop */
+.modal-overlay {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Improve select dropdown appearance */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+/* Better checkbox and radio styling */
+input[type="checkbox"], input[type="radio"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+/* Improve form layout on mobile */
+@media (max-width: 767px) {
+    .form-row {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Better text truncation */
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Improve button spacing */
+.btn + .btn {
+    margin-left: 1rem;
+}
+
+@media (max-width: 767px) {
+    .btn + .btn {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+
+/* Better card hover effects */
+.program-card, .value-card, .link-card, .testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Improve list styling */
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+/* Better hr styling */
+hr {
+    border: none;
+    border-top: 2px solid #f5f5f5;
+    margin: 2rem 0;
+}
+
+/* Improve code blocks if any */
+code, pre {
+    font-family: 'Courier New', monospace;
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+}
+
+/* Better blockquote styling */
+blockquote {
+    border-left: 4px solid #2E8B57;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #666;
+}
+
+/* Improve table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+th {
+    background: #f5f5f5;
+    font-weight: 600;
+}
+
+/* Better empty states */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+}
+
+/* Improve badge styling */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: rgba(46, 139, 87, 0.1);
+    color: #2E8B57;
+}
+
+.badge-error {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.badge-info {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+/* Better alert styling */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.alert-success {
+    background: rgba(46, 139, 87, 0.1);
+    border-left: 4px solid #2E8B57;
+    color: #2E8B57;
+}
+
+.alert-error {
+    background: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.alert-info {
+    background: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid #3498db;
+    color: #3498db;
+}
+
+/* Improve progress bar if needed */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #2E8B57, #3CB371);
+    transition: width 0.3s ease;
+}
+
+/* Better skeleton loading states */
+.skeleton {
+    background: linear-gradient(90deg, #f5f5f5 25%, #e0e0e0 50%, #f5f5f5 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Improve grid gaps on mobile */
+@media (max-width: 767px) {
+    .grid, [class*="-grid"] {
+        gap: 1.5rem !important;
+    }
+}
+
+/* Better aspect ratio boxes */
+.aspect-ratio-box {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    overflow: hidden;
+}
+
+.aspect-ratio-box > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Improve sticky elements */
+.sticky {
+    position: sticky;
+    top: 80px;
+}
+
+/* Better shadow utilities */
+.shadow-sm { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.shadow-md { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.shadow-lg { box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+/* Text utilities */
+.text-small { font-size: 0.875rem; }
+.text-large { font-size: 1.125rem; }
+.font-bold { font-weight: 700; }
+.font-normal { font-weight: 400; }
+
+/* Spacing utilities */
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.pt-0 { padding-top: 0; }
+.pb-0 { padding-bottom: 0; }
