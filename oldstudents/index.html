@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover" />
+  <title>Old Students — Aleeman School</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-deep:   #0d4f2e;
+      --green-rich:   #1a7a47;
+      --green-mid:    #22a05a;
+      --green-light:  #d4edd9;
+      --green-pale:   #f0f9f3;
+      --gold:         #c9a84c;
+      --gold-light:   #f0d98a;
+      --cream:        #faf8f2;
+      --text-dark:    #0d2318;
+      --text-mid:     #2e4a38;
+      --text-muted:   #618070;
+      --white:        #ffffff;
+      --shadow-sm:    0 2px 10px rgba(13, 79, 46, 0.08);
+      --shadow-md:    0 6px 30px rgba(13, 79, 46, 0.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--green-deep);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 42px; height: 42px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1em;
+      color: var(--green-deep);
+    }
+
+    .logo-text {
+      font-family: 'Cinzel', serif;
+      color: var(--white);
+      font-size: 1.1em;
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.6em;
+      color: var(--gold-light);
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      font-size: 0.82em;
+      padding: 6px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.12);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.4em;
+      cursor: pointer;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-deep);
+      position: relative;
+      overflow: hidden;
+      padding: 80px 5% 70px;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,.018) 30px, rgba(255,255,255,.018) 31px),
+        repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,.018) 30px, rgba(255,255,255,.018) 31px);
+    }
+
+    /* Radiating rings */
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.1);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .ring-1 { width: 200px; height: 200px; border-color: rgba(201,168,76,.18); }
+    .ring-2 { width: 350px; height: 350px; border-color: rgba(201,168,76,.12); }
+    .ring-3 { width: 500px; height: 500px; border-color: rgba(201,168,76,.07); }
+    .ring-4 { width: 680px; height: 680px; border-color: rgba(201,168,76,.04); }
+
+    .corner { position: absolute; width: 80px; height: 80px; }
+    .corner::before, .corner::after { content: ''; position: absolute; background: var(--gold); }
+    .corner--tl { top: 20px; left: 20px; }
+    .corner--tl::before { top:0;left:0;width:100%;height:2px; }
+    .corner--tl::after  { top:0;left:0;width:2px;height:100%; }
+    .corner--tr { top: 20px; right: 20px; }
+    .corner--tr::before { top:0;right:0;width:100%;height:2px; }
+    .corner--tr::after  { top:0;right:0;width:2px;height:100%; }
+    .corner--bl { bottom: 20px; left: 20px; }
+    .corner--bl::before { bottom:0;left:0;width:100%;height:2px; }
+    .corner--bl::after  { bottom:0;left:0;width:2px;height:100%; }
+    .corner--br { bottom: 20px; right: 20px; }
+    .corner--br::before { bottom:0;right:0;width:100%;height:2px; }
+    .corner--br::after  { bottom:0;right:0;width:2px;height:100%; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,.18);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--gold-light);
+      font-size: 0.78em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2em, 5vw, 3.4em);
+      color: var(--white);
+      margin-bottom: 16px;
+      position: relative;
+      line-height: 1.2;
+    }
+
+    .hero-divider {
+      width: 60px; height: 2px;
+      background: var(--gold);
+      margin: 0 auto 18px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.68);
+      font-size: 1.05em;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 5%; }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-rich) 100%);
+      padding: 36px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .intro-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .intro-stat .num {
+      font-family: 'Cinzel', serif;
+      font-size: 2em;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .intro-stat .lbl {
+      font-size: 0.78em;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .intro-sep {
+      width: 1px;
+      height: 50px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 70px 0; }
+
+    .sec-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .sec-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-rich);
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .sec-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5em, 3vw, 2.2em);
+      color: var(--green-deep);
+      margin-bottom: 10px;
+    }
+
+    .sec-header h2 i { color: var(--gold); margin-right: 10px; }
+
+    .sec-line {
+      width: 50px; height: 3px;
+      background: linear-gradient(90deg, var(--green-rich), var(--gold));
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    .sec-header p { color: var(--text-muted); font-size: 1em; margin-top: 14px; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .filter-btn {
+      background: var(--white);
+      border: 1px solid var(--green-light);
+      color: var(--text-mid);
+      font-size: 0.82em;
+      padding: 7px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--green-deep);
+      color: var(--gold-light);
+      border-color: var(--green-deep);
+    }
+
+    /* ── ALUMNI GRID ── */
+    .alumni-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .alumni-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(13,79,46,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .alumni-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Gold accent top */
+    .alumni-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--green-mid), var(--gold));
+    }
+
+    /* ── AVATAR area (geometric, no photo) ── */
+    .alumni-avatar {
+      position: relative;
+      height: 170px;
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-rich) 60%, #1d6640 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Geometric pattern in avatar background */
+    .alumni-avatar::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(255,255,255,.04) 14px, rgba(255,255,255,.04) 15px),
+        repeating-linear-gradient(-45deg, transparent, transparent 14px, rgba(255,255,255,.04) 14px, rgba(255,255,255,.04) 15px);
+    }
+
+    /* Decorative ring */
+    .alumni-avatar::after {
+      content: '';
+      position: absolute;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.25);
+    }
+
+    .avatar-icon-wrap {
+      position: relative;
+      z-index: 2;
+      width: 88px; height: 88px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--gold) 0%, #a07830 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7em;
+      color: var(--green-deep);
+    }
+
+    .year-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--gold);
+      color: var(--green-deep);
+      font-size: 0.72em;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      z-index: 3;
+    }
+
+    .field-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(13,79,46,0.85);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold-light);
+      font-size: 0.68em;
+      padding: 4px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      z-index: 3;
+    }
+
+    .alumni-body {
+      padding: 22px 22px 18px;
+      flex: 1;
+    }
+
+    .alumni-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05em;
+      color: var(--green-deep);
+      margin-bottom: 6px;
+    }
+
+    .alumni-year {
+      font-size: 0.8em;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .alumni-achievement {
+      background: var(--green-pale);
+      border-left: 3px solid var(--green-rich);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85em;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .alumni-achievement i {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      display: none;
+    }
+
+    .empty-icon {
+      width: 90px; height: 90px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 2.2em;
+      color: var(--green-rich);
+    }
+
+    .empty-state h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--green-deep);
+      margin-bottom: 10px;
+    }
+
+    .empty-state p { color: var(--text-muted); }
+
+    /* ── QUOTE SECTION ── */
+    .quote-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, #0a3d24 100%);
+      padding: 60px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(201,168,76,.03) 20px, rgba(201,168,76,.03) 21px),
+        repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(201,168,76,.03) 20px, rgba(201,168,76,.03) 21px);
+    }
+
+    .quote-mark {
+      font-size: 3.5em;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 10px;
+      opacity: 0.6;
+      position: relative;
+    }
+
+    .quote-text {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.1em, 2.5vw, 1.6em);
+      color: rgba(255,255,255,0.9);
+      max-width: 700px;
+      margin: 0 auto 16px;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .quote-source {
+      font-size: 0.85em;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--green-pale);
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--green-deep);
+      font-size: clamp(1.4em, 3vw, 2em);
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--green-deep), var(--green-rich));
+      color: var(--white);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9em;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 18px rgba(13,79,46,0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .cta-btn i { color: var(--gold-light); }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(13,79,46,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-deep);
+      color: rgba(255,255,255,0.7);
+      padding: 50px 5% 30px;
+      border-top: 3px solid var(--gold);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+      font-size: 0.95em;
+    }
+
+    footer p { font-size: 0.88em; line-height: 1.8; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 8px; }
+    footer ul li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.88em; }
+    footer ul li a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.82em;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--green-deep);
+        padding: 16px 24px 24px;
+        gap: 4px;
+        border-bottom: 2px solid var(--gold);
+        z-index: 998;
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .intro-sep { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .alumni-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <div class="logo-mark"><i class="fas fa-star-and-crescent"></i></div>
+      <div class="logo-text">
+        Aleeman School
+        <span>"Second To None"</span>
+      </div>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/">About Us</a></li>
+      <li><a href="../academics/">Academics</a></li>
+      <li><a href="../admissions/">Admissions</a></li>
+      <li><a href="../contact/">Contact</a></li>
+      <li><a href="../anthem/">Anthem</a></li>
+      <li><a href="../oldstudents/" class="active">Old Students</a></li>
+      <li><a href="../subjects/">Subjects</a></li>
+      <li><a href="../portal/">Portal</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+    <div class="ring ring-4"></div>
+    <div class="corner corner--tl"></div>
+    <div class="corner corner--tr"></div>
+    <div class="corner corner--bl"></div>
+    <div class="corner corner--br"></div>
+
+    <div class="hero-tag">
+      <i class="fas fa-graduation-cap"></i>
+      Alumni
+    </div>
+    <h1>Our Old Students</h1>
+    <div class="hero-divider"></div>
+    <p>Celebrating the achievements of Aleeman School's outstanding alumni — carrying our motto "Second To None" into the world.</p>
+  </section>
+
+  <!-- ── INTRO STRIP ── -->
+  <div class="intro-strip">
+    <div class="intro-stat">
+      <div class="num">16+</div>
+      <div class="lbl">Years of Excellence</div>
+    </div>
+    <div class="intro-sep"></div>
+    <div class="intro-stat">
+      <div class="num">2010</div>
+      <div class="lbl">Founded</div>
+    </div>
+    <div class="intro-sep"></div>
+    <div class="intro-stat">
+      <div class="num">100s</div>
+      <div class="lbl">Graduates</div>
+    </div>
+    <div class="intro-sep"></div>
+    <div class="intro-stat">
+      <div class="num">98%</div>
+      <div class="lbl">Exam Success Rate</div>
+    </div>
+  </div>
+
+  <!-- ── ALUMNI SECTION ── -->
+  <section class="section">
+    <div class="container">
+
+      <div class="sec-header">
+        <div class="sec-tag">Alumni Hall of Excellence</div>
+        <h2><i class="fas fa-medal"></i> Notable Alumni</h2>
+        <div class="sec-line"></div>
+        <p>Former students who embody our mission of knowledge, faith, and service to humanity</p>
+      </div>
+
+      <!-- FILTER -->
+      <div class="filter-bar">
+        <span class="filter-label"><i class="fas fa-filter"></i> Filter:</span>
+        <button class="filter-btn active" data-filter="all">All Fields</button>
+        <button class="filter-btn" data-filter="medicine">Medicine</button>
+        <button class="filter-btn" data-filter="technology">Technology</button>
+        <button class="filter-btn" data-filter="islamic">Islamic Studies</button>
+        <button class="filter-btn" data-filter="engineering">Engineering</button>
+        <button class="filter-btn" data-filter="business">Business</button>
+      </div>
+
+      <!-- GRID -->
+      <div class="alumni-grid" id="alumniGrid"></div>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Alumni Records Coming Soon</h3>
+        <p>We are compiling achievements of our distinguished former students.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── QUOTE ── -->
+  <section class="quote-section">
+    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+    <p class="quote-text">
+      "Seek knowledge from the cradle to the grave."
+    </p>
+    <p class="quote-source">— Prophet Muhammad ﷺ (Hadith)</p>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <h2>Are You an Old Student?</h2>
+    <p>Connect with your alma mater. Share your achievements and inspire the next generation of Aleeman scholars.</p>
+    <a href="../contact/" class="cta-btn">
+      <i class="fas fa-envelope"></i> Get in Touch
+    </a>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Aleeman School</h4>
+          <p>Al-Eeman School of Science &amp; Arabic Studies — combining modern knowledge with strong Islamic values.</p>
+          <p style="margin-top:8px; color: var(--gold-light); font-style: italic; font-size: 0.85em;">"Second To None"</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../academics/">Academics</a></li>
+            <li><a href="../admissions/">Admissions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">Kamjat Bus Stop, Opeyemi St, Ibadan</a></li>
+            <li><a href="tel:+2348153005393">+234 815 300 5393</a></li>
+            <li><a href="mailto:aleemangroupofschools@gmail.com">aleemangroupofschools@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025/2026 Aleeman School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── ALUMNI DATA ─────────────────────────────
+    // Replace / extend with real alumni data
+    const alumniData = [
+      {
+        name: 'Ahmed Hassan',
+        year: '2020',
+        field: 'medicine',
+        fieldLabel: 'Medicine',
+        achievement: 'Medical Doctor — University of Ibadan Teaching Hospital',
+        icon: 'fa-stethoscope',
+      },
+      {
+        name: 'Fatima Ibrahim',
+        year: '2019',
+        field: 'technology',
+        fieldLabel: 'Technology',
+        achievement: 'Software Engineer — Andela Nigeria',
+        icon: 'fa-laptop-code',
+      },
+      {
+        name: 'Mohammed Ali',
+        year: '2021',
+        field: 'engineering',
+        fieldLabel: 'Engineering',
+        achievement: 'Civil Engineer — Julius Berger Nigeria',
+        icon: 'fa-hard-hat',
+      },
+      {
+        name: 'Zainab Khan',
+        year: '2018',
+        field: 'islamic',
+        fieldLabel: 'Islamic Studies',
+        achievement: 'Islamic Scholar — Al-Azhar University, Egypt',
+        icon: 'fa-book-quran',
+      },
+      {
+        name: 'Omar Abdullah',
+        year: '2020',
+        field: 'business',
+        fieldLabel: 'Business',
+        achievement: 'Entrepreneur & Tech Startup Founder',
+        icon: 'fa-briefcase',
+      },
+      {
+        name: 'Aisha Mohammed',
+        year: '2019',
+        field: 'medicine',
+        fieldLabel: 'Medicine',
+        achievement: 'Pharmacist — Lagos University Teaching Hospital',
+        icon: 'fa-pills',
+      },
+      {
+        name: 'Yusuf Abdulrasheed',
+        year: '2017',
+        field: 'engineering',
+        fieldLabel: 'Engineering',
+        achievement: 'Electrical Engineer — Power Holding Company of Nigeria',
+        icon: 'fa-bolt',
+      },
+      {
+        name: 'Khadijah Suleiman',
+        year: '2018',
+        field: 'islamic',
+        fieldLabel: 'Islamic Studies',
+        achievement: 'Hafizah & Arabic Language Lecturer',
+        icon: 'fa-mosque',
+      },
+      {
+        name: 'Ibrahim Olanrewaju',
+        year: '2022',
+        field: 'technology',
+        fieldLabel: 'Technology',
+        achievement: 'Data Analyst — MTN Nigeria',
+        icon: 'fa-chart-bar',
+      },
+    ];
+
+    // ── RENDER ──────────────────────────────────
+    function renderAlumni(filter = 'all') {
+      const grid       = document.getElementById('alumniGrid');
+      const emptyState = document.getElementById('emptyState');
+      const filtered   = filter === 'all' ? alumniData : alumniData.filter(a => a.field === filter);
+
+      if (filtered.length === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      grid.style.display = 'grid';
+
+      grid.innerHTML = filtered.map(a => `
+        <div class="alumni-card">
+          <div class="alumni-avatar">
+            <span class="year-badge">Class of ${a.year}</span>
+            <div class="avatar-icon-wrap">
+              <div class="avatar-icon"><i class="fas ${a.icon}"></i></div>
+            </div>
+            <span class="field-badge">${a.fieldLabel}</span>
+          </div>
+          <div class="alumni-body">
+            <h3 class="alumni-name">${a.name}</h3>
+            <div class="alumni-year"><i class="fas fa-calendar-alt"></i> Graduated ${a.year}</div>
+            <div class="alumni-achievement">
+              <i class="fas fa-star"></i>${a.achievement}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ── FILTER BUTTONS ───────────────────────────
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderAlumni(this.dataset.filter);
+      });
+    });
+
+    // ── MOBILE NAV ───────────────────────────────
+    const menuBtn  = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    // ── INIT ─────────────────────────────────────
+    renderAlumni();
+  </script>
+</body>
+</html>

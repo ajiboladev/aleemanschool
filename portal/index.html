@@ -2,613 +2,290 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta charset="UTF-8">
-      <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover"
-    />
-  <title>Result Checker — Aleeman School</title>
-    <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no, viewport-fit=cover" />
+  <title>Aleeman School Result Portal</title>
+  <link rel="icon" type="image/x-icon" href="../aleeman-logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1a237e" />
+  <link rel="apple-touch-icon" sizes="180x180" href="aleeman-logo.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Aleeman Primary" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aleeman Primary School Portal" />
+  <meta property="og:description" content="Aleeman Primary School — Admin, Teacher and Student Portals." />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>window.FLOATING_TEXT = 'Proudly 2025/2026';</script>
+<script src="../floating.js"></script>
   <style>
+    * {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary:      #1a5c2a;
-      --primary-dark: #0f3b1a;
-      --primary-mid:  #2d8c4e;
-      --accent:       #52b788;
-      --accent-light: #d8f3dc;
-      --red:          #c62828;
-      --red-light:    #ffebee;
-      --amber:        #f57f17;
-      --amber-light:  #fff8e1;
-      --text:         #1a2e1c;
-      --text-muted:   #4a6551;
-      --border:       #c8e6c9;
-      --bg:           #f0fdf4;
-      --white:        #ffffff;
-      --shadow:       0 4px 24px rgba(0,0,0,.1);
+      --p1:green; --p2:#283593; --p3:#3949ab; --p4:#5c6bc0; --p5:#e8eaf6;
+      --text:#111827; --muted:#4b5563; --white:#fff;
     }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-
-    /* ── HEADER ── */
-    .site-header {
-      background: linear-gradient(135deg, #0f3b1a, #1a5c2a);
-      color: #fff; padding: 1rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
+    * { -webkit-user-select:none; -ms-user-select:none; user-select:none; }
+    html, body { height:100%; }
+    body {
+      font-family:'DM Sans',system-ui,sans-serif;
+      background:var(--p1);
+      color:var(--white);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
-    .site-header .logo { display: flex; align-items: center; gap: .75rem; }
-    .site-header .logo-icon { font-size: 1.6rem; }
-    .site-header .logo-text h1 { font-size: 1rem; font-weight: 700; }
-    .site-header .logo-text p  { font-size: .75rem; opacity: .75; }
-    .home-link { color: rgba(255,255,255,.8); text-decoration: none; font-size: .82rem; }
-    .home-link:hover { color: #fff; }
+    h1,h2,h3 { font-family:'Outfit',sans-serif; }
 
-    /* ── SEARCH SECTION ── */
-    .search-section {
-      max-width: 560px; margin: 2.5rem auto 0; padding: 0 1rem;
-    }
-    .search-card {
-      background: var(--white); border-radius: 16px; padding: 2rem;
-      box-shadow: var(--shadow);
-    }
-    .search-card .title {
-      text-align: center; margin-bottom: 1.75rem;
-    }
-    .search-card .title h2 { font-size: 1.3rem; color: var(--primary); }
-    .search-card .title p  { font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 450px) { .form-grid { grid-template-columns: 1fr; } }
-
-    .form-group { margin-bottom: 0; }
-    .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--text-muted); margin-bottom: .3rem; }
-    .form-group input, .form-group select {
-      width: 100%; padding: .7rem .9rem;
-      border: 1.5px solid var(--border); border-radius: 8px;
-      font-size: .95rem; outline: none; transition: border .2s;
-      background: #fff;
-    }
-    .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
-
-    .search-btn {
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      width: 100%; padding: .85rem; margin-top: 1.25rem;
-      background: var(--primary); color: #fff;
-      border: none; border-radius: 10px;
-      font-size: 1rem; font-weight: 700; cursor: pointer;
-      transition: background .2s, transform .15s;
-    }
-    .search-btn:hover   { background: var(--primary-mid); transform: translateY(-1px); }
-    .search-btn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
-
-    .error-box { background: var(--red-light); color: var(--red); border: 1px solid #ef9a9a; border-radius: 8px; padding: .75rem 1rem; font-size: .88rem; margin-top: 1rem; display: none; }
-    .error-box.show { display: block; }
-
-    /* ── RESULT CARD ── */
-    #result-section {
-      max-width: 760px; margin: 2rem auto; padding: 0 1rem 3rem;
-      display: none;
+    /* ── Background pattern ── */
+    body::before {
+      content:'';
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(92,107,192,.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(26,35,126,.5) 0%, transparent 60%);
+      pointer-events:none;
+      z-index:0;
     }
 
-    .result-controls {
-      display: flex; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap;
+    /* ── Header ── */
+    .header {
+      position:relative; z-index:1;
+      text-align:center;
+      padding:3rem 1.5rem 2rem;
     }
-    .ctrl-btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      padding: .55rem 1.1rem; border-radius: 8px; border: none;
-      font-size: .85rem; font-weight: 600; cursor: pointer; transition: opacity .15s;
+    .school-emblem {
+      width:80px; height:80px; border-radius:50%;
+      background:rgba(255,255,255,.12);
+      border:3px solid rgba(255,255,255,.25);
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:2.5rem; margin-bottom:1.25rem;
+      box-shadow:0 8px 32px rgba(0,0,0,.2);
     }
-    .ctrl-btn:hover { opacity: .85; }
-    .ctrl-btn.new    { background: var(--accent-light); color: var(--primary); }
-    .ctrl-btn.print  { background: var(--primary); color: #fff; }
-
-    /* The report card (printable) */
-    .report-card {
-      background: var(--white);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
+    .header h1 {
+      font-size:clamp(1.3rem,4vw,1.9rem);
+      font-weight:900;
+      letter-spacing:.02em;
+      line-height:1.2;
     }
-
-    /* School header */
-    .rc-header {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      color: #fff; text-align: center; padding: 1.5rem 1rem 1.25rem;
+    .header p {
+      font-size:.85rem;
+      opacity:.7;
+      margin-top:.5rem;
     }
-    .rc-header .emblem { font-size: 2.5rem; margin-bottom: .5rem; }
-    .rc-header h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: .03em; }
-    .rc-header p  { font-size: .78rem; opacity: .85; margin-top: .25rem; }
-    .rc-header .term-badge {
-      display: inline-block; background: rgba(255,255,255,.2);
-      border: 1px solid rgba(255,255,255,.4);
-      border-radius: 20px; padding: .25rem .85rem;
-      font-size: .78rem; font-weight: 600; margin-top: .75rem;
-    }
-
-    /* Student info grid */
-    .rc-info {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0; border-bottom: 2px solid var(--border);
-    }
-    .rc-info-item {
-      padding: .75rem 1.25rem;
-      border-right: 1px solid var(--border);
-    }
-    .rc-info-item:last-child { border-right: none; }
-    .rc-info-item .lbl { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
-    .rc-info-item .val { font-size: .95rem; font-weight: 700; color: var(--text); margin-top: .15rem; }
-
-    /* Scores table */
-    .rc-table-wrap { overflow-x: auto; }
-    .rc-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-    .rc-table thead th {
-      background: var(--accent-light); color: var(--primary-dark);
-      padding: .65rem 1rem; text-align: left;
-      font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
-    }
-    .rc-table thead th:not(:first-child) { text-align: center; }
-    .rc-table td { padding: .6rem 1rem; border-bottom: 1px solid #edf5ee; }
-    .rc-table td:not(:first-child) { text-align: center; }
-    .rc-table tr:last-child td { border-bottom: none; }
-    .rc-table tr:nth-child(even) td { background: #f9fdf9; }
-
-    .grade-pill {
-      display: inline-block; padding: .15rem .55rem; border-radius: 6px;
-      font-size: .78rem; font-weight: 700;
-    }
-    .gA { background: #e8f5e9; color: #1a5c2a; }
-    .gB { background: #e3f2fd; color: #1565c0; }
-    .gC { background: #fff8e1; color: #e65100; }
-    .gD { background: #fff3e0; color: #bf360c; }
-    .gF { background: var(--red-light); color: var(--red); }
-
-    /* Summary bar */
-    .rc-summary {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      background: var(--accent-light); border-top: 2px solid var(--border);
-    }
-    .rc-summary-item { padding: .9rem 1.25rem; text-align: center; border-right: 1px solid var(--border); }
-    .rc-summary-item:last-child { border-right: none; }
-    .rc-summary-item .s-lbl { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
-    .rc-summary-item .s-val { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-top: .1rem; }
-
-    /* Grade key */
-    .grade-key {
-      padding: 1rem 1.25rem; border-top: 1px solid var(--border);
-      background: #fafffe;
-    }
-    .grade-key h4 { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: .6rem; }
-    .grade-key-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .gk-item { font-size: .72rem; background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: .2rem .55rem; }
-
-    /* Footer */
-    .rc-footer {
-      border-top: 2px solid var(--border); padding: 1rem 1.25rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; background: #fafffe;
-    }
-    .sig-line { border-top: 1.5px solid var(--text-muted); padding-top: .4rem; margin-top: 2rem; font-size: .75rem; color: var(--text-muted); font-weight: 600; }
-
-    /* Position ribbon */
-    .position-ribbon {
-      text-align: center; padding: .65rem 1rem;
-      background: linear-gradient(90deg, var(--primary-dark), var(--primary-mid), var(--primary-dark));
-      color: #fff; font-size: .88rem; font-weight: 600;
+    .session-tag {
+      display:inline-block;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:20px;
+      padding:.3rem .9rem;
+      font-size:.75rem;
+      font-weight:600;
+      margin-top:.9rem;
+      letter-spacing:.03em;
     }
 
-    /* Performance bar */
-    .perf-bar-wrap { padding: 1rem 1.25rem; border-top: 1px solid var(--border); }
-    .perf-bar-wrap h4 { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: .6rem; }
-    .perf-bar-track { background: var(--border); border-radius: 10px; height: 12px; overflow: hidden; }
-    .perf-bar-fill  { height: 100%; border-radius: 10px; transition: width 1s ease; }
-
-    /* Loading */
-    .loading-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(255,255,255,.75); backdrop-filter: blur(4px);
-      align-items: center; justify-content: center; z-index: 500; flex-direction: column; gap: 1rem;
+    /* ── Portal cards ── */
+    .portals {
+      position:relative; z-index:1;
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 1.25rem 2.5rem;
     }
-    .loading-overlay.show { display: flex; }
-    .loader { width: 48px; height: 48px; border: 5px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin .7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Print styles */
-    @media print {
-      body { background: #fff !important; }
-      .site-header, .search-section, .result-controls, .grade-key, #toast { display: none !important; }
-      #result-section { margin: 0; padding: 0; display: block !important; }
-      .report-card { border: 1px solid #000; box-shadow: none; border-radius: 0; }
-      .rc-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .rc-summary { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .portal-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.1rem;
+      width:100%;
+      max-width:860px;
     }
 
-    #toast {
-      position: fixed; bottom: 1.5rem; right: 1.5rem;
-      background: var(--text); color: #fff; padding: .75rem 1.2rem;
-      border-radius: 8px; font-size: .88rem; z-index: 9999;
-      transform: translateY(20px); opacity: 0; transition: all .25s; pointer-events: none;
+    .portal-card {
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:18px;
+      padding:2rem 1.5rem 1.75rem;
+      text-decoration:none;
+      color:var(--white);
+      transition:transform .2s, background .2s, border-color .2s, box-shadow .2s;
+      display:flex;
+      flex-direction:column;
+      gap:.75rem;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      position:relative;
+      overflow:hidden;
     }
-    #toast.show { transform: translateY(0); opacity: 1; }
-    #toast.error { background: var(--red); }
+    .portal-card::before {
+      content:'';
+      position:absolute;
+      top:-40px; right:-40px;
+      width:130px; height:130px;
+      border-radius:50%;
+      background:rgba(255,255,255,.05);
+      pointer-events:none;
+    }
+    .portal-card:hover {
+      transform:translateY(-4px);
+      background:rgba(255,255,255,.14);
+      border-color:rgba(255,255,255,.3);
+      box-shadow:0 16px 48px rgba(0,0,0,.25);
+    }
+    .portal-card:active { transform:translateY(-1px); }
+
+    .card-icon {
+      font-size:2.2rem;
+      width:56px; height:56px;
+      background:rgba(255,255,255,.12);
+      border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    .card-title {
+      font-size:1.15rem;
+      font-weight:800;
+      font-family:'Outfit',sans-serif;
+    }
+    .card-desc {
+      font-size:.82rem;
+      opacity:.7;
+      line-height:1.5;
+      flex:1;
+    }
+    .card-cta {
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      font-size:.8rem;
+      font-weight:700;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:8px;
+      padding:.4rem .9rem;
+      margin-top:.25rem;
+      width:fit-content;
+      transition:background .15s;
+    }
+    .portal-card:hover .card-cta { background:rgba(255,255,255,.22); }
+
+    /* Card accent lines */
+    .portal-card.admin  { border-top:3px solid #5c6bc0; }
+    .portal-card.teacher{ border-top:3px solid #42a5f5; }
+    .portal-card.student{ border-top:3px solid #66bb6a; }
+
+    /* ── Footer ── */
+    .footer {
+      position:relative; z-index:1;
+      text-align:center;
+      padding:1.25rem;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:.74rem;
+      opacity:.45;
+    }
+
+    /* ── Responsive ── */
+    @media(max-width:520px) {
+      .header { padding:2rem 1.25rem 1.5rem; }
+      .portal-grid { grid-template-columns:1fr; max-width:380px; }
+      .portals { padding-bottom:2rem; }
+    }
+
+    /* ── Fade-in animation ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+    .portal-card { animation:fadeUp .4s ease both; }
+    .portal-card:nth-child(1) { animation-delay:.05s; }
+    .portal-card:nth-child(2) { animation-delay:.12s; }
+    .portal-card:nth-child(3) { animation-delay:.19s; }
+    .header { animation:fadeUp .3s ease both; }
   </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="site-header">
-  <div class="logo">
-    <span class="logo-icon">📚</span>
-    <div class="logo-text">
-      <h1>Aleeman School Portal</h1>
-      <p>Result Checker</p>
-    </div>
-  </div>
-  <a href="../index.html" class="home-link">← Home</a>
-</header>
-
-<!-- Loading -->
-<div class="loading-overlay" id="loading-overlay">
-  <div class="loader"></div>
-  <p style="color:var(--primary);font-weight:600">Fetching your result…</p>
+<div class="header">
+  <!-- <div class="school-emblem">🏫</div> -->
+   <div class="emblem"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></div>
+  <h1>Aleeman School</h1>
+  <p>School Management Portal</p>
+  <div class="session-tag" id="session-tag">Loading session… <i class="fas fa-spinner fa-spin"></i></div>
+  <button id="back-to-previous" style="margin-left:0.75rem;padding:.35rem .75rem;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:var(--white);cursor:pointer;">← Back</button>
 </div>
 
-<!-- Search Card -->
-<div class="search-section">
-  <div class="search-card">
-    <div class="title">
-      <h2>📋 Check Your Result</h2>
-      <p>Enter your details to view your exam result</p>
-    </div>
+<div class="portals">
+  <div class="portal-grid">
 
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Student Number</label>
-        <input type="text" id="inp-number" placeholder="e.g. AL12345" />
-      </div>
-      <div class="form-group">
-        <label>PIN / Password</label>
-        <input type="password" id="inp-password" placeholder="••••••" />
-      </div>
-      <div class="form-group">
-        <label>Class</label>
-        <select id="inp-class">
-          <option value="">Select class</option>
-          <option>JSS1</option><option>JSS2</option><option>JSS3</option>
-          <option>SS1</option><option>SS2</option><option>SS3</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Term</label>
-        <select id="inp-term">
-          <option value="">Select term</option>
-          <option>First Term</option><option>Second Term</option><option>Third Term</option>
-        </select>
-      </div>
-    </div>
+    <a class="portal-card admin" href="primary.html">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">Primary Portal</div>
+      <div class="card-desc">Check primary school results</div>
+      <div class="card-cta">Open Primary Portal →</div>
+    </a>
 
-    <div class="form-group" style="margin-top:1rem">
-      <label>Academic Session</label>
-      <input type="text" id="inp-session" placeholder="e.g. 2023/2024" />
-    </div>
+    <a class="portal-card teacher" href="secondary.html">
+      <div class="card-icon">👨‍🏫</div>
+      <div class="card-title">Secondary Portal</div>
+      <div class="card-desc">Check secondary school results</div>
+      <div class="card-cta">Open Secondary Portal →</div>
+    </a>
 
-    <button class="search-btn" id="search-btn">
-      🔍 Check My Result
-    </button>
-    <div class="error-box" id="error-box"></div>
-  </div>
-</div>
-
-<!-- Result Section -->
-<div id="result-section">
-  <div class="result-controls">
-    <button class="ctrl-btn new" id="new-search-btn">← New Search</button>
-    <button class="ctrl-btn print" onclick="window.print()">🖨️ Print Result</button>
-  </div>
-
-  <div class="report-card" id="report-card">
-
-    <!-- School Header -->
-    <div class="rc-header">
-      <div class="emblem">🏫</div>
-      <h1>ALEEMAN SCHOOL OF SCIENCE AND ARABIC STUDIES</h1>
-      <p>Excellence in Education · Science · Arabic · Islamic Values</p>
-      <div class="term-badge" id="rc-term-badge">— Term — | Session —</div>
-    </div>
-
-    <!-- Student Info -->
-    <div class="rc-info">
-      <div class="rc-info-item">
-        <div class="lbl">Student Name</div>
-        <div class="val" id="rc-name">—</div>
-      </div>
-      <div class="rc-info-item">
-        <div class="lbl">Student Number</div>
-        <div class="val" id="rc-number">—</div>
-      </div>
-      <div class="rc-info-item">
-        <div class="lbl">Class</div>
-        <div class="val" id="rc-class">—</div>
-      </div>
-      <div class="rc-info-item">
-        <div class="lbl">Gender</div>
-        <div class="val" id="rc-gender">—</div>
-      </div>
-    </div>
-
-    <!-- Position Ribbon -->
-    <div class="position-ribbon" id="rc-position-ribbon">Position: Computing…</div>
-
-    <!-- Scores Table -->
-    <div class="rc-table-wrap">
-      <table class="rc-table">
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>CA (30)</th>
-            <th>Exam (70)</th>
-            <th>Total (100)</th>
-            <th>Grade</th>
-            <th>Remark</th>
-          </tr>
-        </thead>
-        <tbody id="rc-subjects-tbody"></tbody>
-      </table>
-    </div>
-
-    <!-- Performance bar -->
-    <div class="perf-bar-wrap">
-      <h4>Overall Performance</h4>
-      <div class="perf-bar-track">
-        <div class="perf-bar-fill" id="perf-bar" style="width:0;background:var(--primary)"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted);margin-top:.3rem">
-        <span>0%</span><span id="perf-pct">—</span><span>100%</span>
-      </div>
-    </div>
-
-    <!-- Summary -->
-    <div class="rc-summary">
-      <div class="rc-summary-item">
-        <div class="s-lbl">Total Score</div>
-        <div class="s-val" id="rc-total">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">Average</div>
-        <div class="s-val" id="rc-average">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">Position</div>
-        <div class="s-val" id="rc-position">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">In Class of</div>
-        <div class="s-val" id="rc-outof">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">Submitted By</div>
-        <div class="s-val" id="rc-teacher" style="font-size:.9rem">—</div>
-      </div>
-    </div>
-
-    <!-- Grade Key -->
-    <div class="grade-key">
-      <h4>Grading Scale</h4>
-      <div class="grade-key-grid">
-        <div class="gk-item"><strong>A1</strong> 75–100 Excellent</div>
-        <div class="gk-item"><strong>B2</strong> 70–74 Very Good</div>
-        <div class="gk-item"><strong>B3</strong> 65–69 Good</div>
-        <div class="gk-item"><strong>C4</strong> 60–64 Credit</div>
-        <div class="gk-item"><strong>C5</strong> 55–59 Credit</div>
-        <div class="gk-item"><strong>C6</strong> 50–54 Credit</div>
-        <div class="gk-item"><strong>D7</strong> 45–49 Pass</div>
-        <div class="gk-item"><strong>E8</strong> 40–44 Pass</div>
-        <div class="gk-item"><strong>F9</strong> 0–39 Fail</div>
-      </div>
-    </div>
-
-    <!-- Signature Footer -->
-    <!-- <div class="rc-footer">
-      <div>
-        <div style="margin-bottom:3rem"></div>
-        <div class="sig-line">Class Teacher's Signature</div>
-      </div>
-      <div>
-        <div style="margin-bottom:3rem"></div>
-        <div class="sig-line">Principal's Signature &amp; Stamp</div>
-      </div>
-    </div> -->
+    <!-- <a class="portal-card student" href="student.html">
+      <div class="card-icon">🎓</div>
+      <div class="card-title">Student Result</div>
+      <div class="card-desc">Check your result using your Student Number, PIN, class, term, and session.</div>
+      <div class="card-cta">Check My Result →</div>
+    </a> -->
 
   </div>
 </div>
 
-<div id="toast"></div>
+<div class="footer">
+  &copy; <span id="yr"></span> Aleeman  School · All rights reserved
+</div>
 
-<!-- Script -->
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
-                         from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD8fS0g_IU9RKBdyhx-WmFZZbttEbCC464",
-  authDomain: "aleeman-school.firebaseapp.com",
-  projectId: "aleeman-school",
-  storageBucket: "aleeman-school.firebasestorage.app",
-  messagingSenderId: "1095322007489",
-  appId: "1:1095322007489:web:0e43cb98bd514f0ea7e140"
+const FB_CONFIG = {
+  apiKey:"AIzaSyAVD2x5XR55f_6GUBCNcfUcbT0LiTiw8VU",
+  authDomain:"aleeman-primary.firebaseapp.com",
+  projectId:"aleeman-primary",
+  storageBucket:"aleeman-primary.firebasestorage.app",
+  messagingSenderId:"120804301463",
+  appId:"1:120804301463:web:d1a84b22edd67bd36e67d2"
 };
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApp() : initializeApp(FB_CONFIG);
 const db  = getFirestore(app);
 
-function showError(msg) {
-  const el = document.getElementById('error-box');
-  el.textContent = msg; el.classList.add('show');
-}
-function clearError() { document.getElementById('error-box').classList.remove('show'); }
-function setLoading(on) {
-  document.getElementById('loading-overlay').classList.toggle('show', on);
-  document.getElementById('search-btn').disabled = on;
-}
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-function resultDocId(num, cls, term, session) {
-  const s = v => String(v ?? '').trim().toLowerCase()
-    .replace(/\s+/g, '-').replace(/[\/\\]/g, '-').replace(/[^a-z0-9\-]/g, '');
-  return `${s(num)}__${s(cls)}__${s(term)}__${s(session)}`;
-}
+// Back button: go to previous page if available
+document.getElementById('back-to-previous').addEventListener('click', () => {
+  if (history.length > 1) history.back(); else window.location.href = './';
+});
 
-function gradeClass(g) {
-  if (!g) return '';
-  if (g.startsWith('A')) return 'gA';
-  if (g.startsWith('B')) return 'gB';
-  if (g.startsWith('C')) return 'gC';
-  if (g.startsWith('D') || g.startsWith('E')) return 'gD';
-  return 'gF';
-}
-
-function ordinal(n) {
-  const s = ['th','st','nd','rd'];
-  const v = n % 100;
-  return n + (s[(v-20)%10] || s[v] || s[0]);
-}
-
-/* ── Search ── */
-document.getElementById('search-btn').addEventListener('click', async () => {
-  clearError();
-  const number  = document.getElementById('inp-number').value.trim();
-  const password= document.getElementById('inp-password').value.trim();
-  const cls     = document.getElementById('inp-class').value;
-  const term    = document.getElementById('inp-term').value;
-  const session = document.getElementById('inp-session').value.trim();
-
-  if (!number || !password || !cls || !term || !session) {
-    showError('Please fill in all fields.'); return;
+/* Load current session from Firestore to display on index */
+try {
+  const snap = await getDoc(doc(db,'settings','session'));
+  const tag  = document.getElementById('session-tag');
+  if (snap.exists()) {
+    const d = snap.data();
+    const s = d.activeSession||'', t = d.activeTerm||'';
+    tag.textContent = (t&&s) ? `${t}  ·  ${s}` : (s || 'Session not set');
+  } else {
+    tag.textContent = 'Session not configured';
   }
-
-  setLoading(true);
-  try {
-    /* Step 1: Verify student credentials */
-    const studentQ = await getDocs(query(
-      collection(db,'students'),
-      where('number','==',number),
-      where('password','==',password),
-      where('class','==',cls)
-    ));
-
-    if (studentQ.empty) {
-      showError('Student not found. Check your number, PIN, and class.'); setLoading(false); return;
-    }
-
-    /* Step 2: Fetch result */
-    const docId  = resultDocId(number, cls, term, session);
-    const resSnap= await getDoc(doc(db,'results', docId));
-
-    if (!resSnap.exists()) {
-      showError(`No result found for ${term} of ${session}. Please check your details or contact your class teacher.`);
-      setLoading(false); return;
-    }
-
-    const result  = resSnap.data();
-    const student = studentQ.docs[0].data();
-
-    /* Step 3: Calculate position */
-    let position    = 1;
-    let classTotal  = 1;
-    try {
-      const allQ = await getDocs(query(
-        collection(db,'results'),
-        where('class','==',cls),
-        where('term','==',term),
-        where('session','==',session)
-      ));
-      classTotal = allQ.size;
-      const averages = allQ.docs.map(d => d.data().average || 0);
-      averages.sort((a,b) => b-a);
-      const studentAvg = result.average || 0;
-      position = averages.indexOf(studentAvg) + 1;
-      // Handle ties: find exact rank
-      let rank = 1;
-      for (const avg of averages) {
-        if (avg > studentAvg) rank++;
-      }
-      position = rank;
-    } catch(e) { /* position stays 1 */ }
-
-    setLoading(false);
-    renderResult(result, student, position, classTotal);
-  } catch(e) {
-    setLoading(false);
-    showError('Error fetching result. Check your connection and try again.');
-    console.error(e);
-  }
-});
-
-/* ── Render Result ── */
-function renderResult(result, student, position, classTotal) {
-  /* Hide search, show result */
-  document.getElementById('result-section').style.display = 'block';
-  document.querySelector('.search-section').style.display = 'none';
-  document.querySelector('.site-header').scrollIntoView({ behavior:'smooth' });
-
-  /* Header */
-  document.getElementById('rc-term-badge').textContent = `${result.term}  |  ${result.session}`;
-  document.getElementById('rc-name').textContent    = result.studentName || '—';
-  document.getElementById('rc-number').textContent  = result.studentNumber || '—';
-  document.getElementById('rc-class').textContent   = result.class || '—';
-  document.getElementById('rc-gender').textContent  = student.gender || result.gender || '—';
-
-  /* Position ribbon */
-  document.getElementById('rc-position-ribbon').textContent =
-    `Class Position: ${ordinal(position)} out of ${classTotal} students`;
-
-  /* Subjects */
-  const tbody = document.getElementById('rc-subjects-tbody');
-  tbody.innerHTML = (result.subjects || []).map(s => `
-    <tr>
-      <td style="font-weight:500;white-space:nowrap">${s.name}</td>
-      <td>${s.caTotal ?? '—'}</td>
-      <td>${s.exam ?? '—'}</td>
-      <td><strong>${s.total}</strong></td>
-      <td><span class="grade-pill ${gradeClass(s.grade)}">${s.grade}</span></td>
-      <td>${s.remark||'—'}</td>
-    </tr>`).join('');
-
-  /* Summary */
-  const avg = result.average != null ? result.average.toFixed(1) : '—';
-  document.getElementById('rc-total').textContent   = result.totalScore != null ? result.totalScore : '—';
-  document.getElementById('rc-average').textContent = avg + (avg !== '—' ? '%' : '');
-  document.getElementById('rc-position').textContent= ordinal(position);
-  document.getElementById('rc-outof').textContent   = classTotal;
-  document.getElementById('rc-teacher').textContent = result.submittedBy || '—';
-
-  /* Performance bar */
-  const pct = result.average != null ? Math.min(result.average, 100) : 0;
-  setTimeout(() => {
-    document.getElementById('perf-bar').style.width = pct + '%';
-    document.getElementById('perf-bar').style.background =
-      pct >= 70 ? 'var(--primary)' : pct >= 50 ? '#f57f17' : '#c62828';
-  }, 100);
-  document.getElementById('perf-pct').textContent = avg + (avg !== '—' ? '%' : '');
+} catch {
+  document.getElementById('session-tag').textContent = 'Aleeman  School';
 }
-
-/* ── New Search ── */
-document.getElementById('new-search-btn').addEventListener('click', () => {
-  document.getElementById('result-section').style.display = 'none';
-  document.querySelector('.search-section').style.display = 'block';
-  clearError();
-  ['inp-number','inp-password','inp-session'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('inp-class').value='';
-  document.getElementById('inp-term').value='';
-  document.querySelector('.search-section').scrollIntoView({ behavior:'smooth' });
-});
-
-/* Enter key support */
-['inp-number','inp-password','inp-class','inp-term','inp-session'].forEach(id => {
-  document.getElementById(id).addEventListener('keydown', e => {
-    if (e.key==='Enter') document.getElementById('search-btn').click();
-  });
-});
-
 </script>
 </body>
 </html>

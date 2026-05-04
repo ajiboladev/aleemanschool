@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="../css/improvements.css">
      <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+      <script>window.FLOATING_TEXT = 'Proudly 2025/2026';</script>
+<script src="../floating.js"></script>
 </head>
 <body>
     <!-- Navigation (Same as homepage) -->
@@ -180,9 +183,14 @@
     <!-- Academic Calendar -->
     <section class="calendar-section">
         <div class="container">
-            <h2 class="section-title">Academic Calendar 2024/2025</h2>
+            <h2 class="section-title">Academic Calendar <span id="year"></span></h2>
+
+            <script>
+    let date = document.getElementById("year");
+    date.innerHTML = new Date().getFullYear();
+            </script>
             
-            <div class="calendar-timeline">
+            <!-- <div class="calendar-timeline">
                 <div class="timeline-item">
                     <div class="timeline-date">September 9, 2024</div>
                     <div class="timeline-content">
@@ -215,10 +223,16 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="download-section">
+             -->
+            <!-- <div class="download-section">
                 <a href="assets/academic-calendar.pdf" class="download-btn" download>
-                    <i class="fas fa-download"></i> Download Full Calendar (PDF)
+                    <i class="fas fa-download"></i> view Full Calendar (PDF)
+                </a>
+            </div> -->
+
+            <div class="download-section">
+                <a href="#" class="download-btn" onclick="window.location.href='../subjects/'">
+                    <i class="fas fa-download"></i> view Full Calendar
                 </a>
             </div>
         </div>
@@ -231,19 +245,19 @@
                 <div class="footer-col">
                     <h3>Aleeman School</h3>
                     <p>School of Science and Arabic Study</p>
-                    <p>Building Future Leaders with Knowledge and Faith</p>
+                    <p class="footer-tagline">"Second To None"</p>
                 </div>
                 <div class="footer-col">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> School Address Here</p>
-                    <p><i class="fas fa-phone"></i> +234 XXX XXX XXXX</p>
-                    <p><i class="fas fa-envelope"></i> info@aleemanschool.edu.ng</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ibadan, Oyo State</p>
+                    <p><i class="fas fa-phone"></i> +234 815 300 5393</p>
+                    <p><i class="fas fa-envelope"></i> aleemangroupofschools@gmail.com</p>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col" style="color: white;">
                     <h3>Quick Links</h3>
-                    <p><a href="../admissions/">Admissions</a></p>
-                    <p><a href="../academics/">Academic Programs</a></p>
-                    <p><a href="../about/">School History</a></p>
+                    <p><a href="../admissions/" style="color: white; text-decoration: none; ">Admissions</a></p>
+                    <p><a href="../academics/" style="color: white; text-decoration: none; ">Academic Programs</a></p>
+                    <p><a href="../about/" style="color: white; text-decoration: none; ">School History</a></p>
                 </div>
             </div>
             <p class="copyright">&copy; <span id="year"></span> Aleeman School. All rights reserved.</p>

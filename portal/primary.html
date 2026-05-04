@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no, viewport-fit=cover" />
+  <title>Student Portal — Aleeman Primary School</title>
+  <link rel="icon" type="image/x-icon" href="../aleeman-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <script>window.FLOATING_TEXT = 'Proudly 2025/2026';</script>
+<script src="../floating.js"></script>
+  <style>
+    * {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --p1:#1a237e; --p2:#283593; --p3:#3949ab; --p4:#5c6bc0; --p5:#e8eaf6;
+      --green:#1a5c2a; --green-l:#d8f3dc;
+      --red:#c62828; --red-l:#ffebee;
+      --amber:#f57f17; --amber-l:#fff8e1;
+      --text:#111827; --muted:#4b5563; --border:#c5cae9; --bg:#f0f2ff; --white:#fff;
+      --shadow:0 4px 24px rgba(26,35,126,.12);
+    }
+    * { -webkit-user-select:none; -ms-user-select:none; user-select:none; }
+    body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+    h1,h2,h3,h4 { font-family:'Outfit',sans-serif; }
+
+    /* ── LOADING ── */
+    #page-loading { position:fixed; inset:0; background:linear-gradient(135deg,var(--p1),var(--p3)); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:99999; gap:1.25rem; }
+    #page-loading .al-icon { font-size:3.5rem; }
+    #page-loading .al-spinner { width:44px; height:44px; border:4px solid rgba(255,255,255,.25); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; }
+    #page-loading p { color:rgba(255,255,255,.85); font-size:.9rem; font-weight:600; }
+
+    /* ── HEADER ── */
+    .site-header {
+      background:linear-gradient(135deg,var(--p1),var(--p2));
+      color:#fff; padding:1rem 1.5rem;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo { display:flex; align-items:center; gap:.75rem; }
+    .logo-icon { font-size:1.7rem; }
+    .logo-text h1 { font-size:1rem; font-weight:800; }
+    .logo-text p  { font-size:.74rem; opacity:.75; }
+    .header-right { display:flex; align-items:center; gap:.75rem; }
+    .session-pill { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); border-radius:20px; padding:.25rem .75rem; font-size:.75rem; font-weight:600; display:none; }
+
+    /* ── LOGIN PAGE ── */
+    #login-page { min-height:calc(100vh - 65px); display:flex; align-items:center; justify-content:center; padding:2rem 1rem; }
+    .login-card {
+      background:var(--white); border-radius:20px; padding:2.5rem 2rem;
+      width:100%; max-width:440px; box-shadow:var(--shadow); text-align:center;
+    }
+    .login-card .card-icon { font-size:3rem; margin-bottom:.6rem; }
+    .login-card h2 { font-size:1.4rem; color:var(--p2); margin-bottom:.25rem; }
+    .login-card .subtitle { font-size:.82rem; color:var(--muted); margin-bottom:2rem; }
+
+    .fg { text-align:left; margin-bottom:1rem; }
+    .fg label { display:block; font-size:.78rem; font-weight:600; color:var(--muted); margin-bottom:.3rem; letter-spacing:.03em; text-transform:uppercase; }
+    .fg input, .fg select {
+      width:100%; padding:.72rem .95rem; border:1.5px solid var(--border); border-radius:10px;
+      font-size:.92rem; outline:none; transition:border .2s; font-family:inherit; background:var(--white);
+    }
+    .fg input:focus,.fg select:focus { border-color:var(--p2); box-shadow:0 0 0 3px rgba(40,53,147,.08); }
+
+    .pw-wrap { position:relative; }
+    .pw-wrap input { padding-right:2.6rem !important; }
+    .pw-eye { position:absolute; right:.65rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--muted); font-size:1rem; padding:.15rem; line-height:1; }
+    .pw-eye:hover { color:var(--p2); }
+
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+    @media(max-width:420px){ .form-grid { grid-template-columns:1fr; } }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.4rem; padding:.72rem 1.4rem; border-radius:10px; border:none; font-size:.88rem; font-weight:600; cursor:pointer; transition:opacity .15s,transform .15s; font-family:'Outfit',sans-serif; }
+    .btn:hover:not(:disabled) { opacity:.88; transform:translateY(-1px); }
+    .btn:disabled { opacity:.55; cursor:not-allowed; transform:none; }
+    .btn-primary { background:var(--p2); color:var(--white); }
+    .btn-ghost   { background:transparent; color:var(--p2); border:1.5px solid var(--p2); }
+    .btn-ghost-w { background:transparent; color:var(--white); border:1.5px solid rgba(255,255,255,.4); }
+    .btn-sm { padding:.38rem .9rem; font-size:.78rem; }
+    .btn-full { width:100%; }
+
+    .err-box { background:var(--red-l); color:var(--red); padding:.65rem .95rem; border-radius:10px; font-size:.84rem; margin-top:.75rem; display:none; font-weight:600; }
+    .err-box.show { display:block; }
+
+    /* ── LOADING SPINNER ── */
+    .spinner { display:inline-block; width:16px; height:16px; border:2.5px solid rgba(255,255,255,.4); border-top-color:var(--white); border-radius:50%; animation:spin .6s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+
+    /* ── RESULT PAGE ── */
+    #result-page { display:none; padding:1.5rem 1rem 3rem; }
+    .result-controls { max-width:780px; margin:0 auto 1rem; display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; }
+    .ctrl-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.52rem 1rem; border-radius:8px; border:none; font-size:.84rem; font-weight:600; cursor:pointer; transition:opacity .15s; font-family:'Outfit',sans-serif; }
+    .ctrl-btn:hover { opacity:.85; }
+    .ctrl-btn.back  { background:var(--p5); color:var(--p2); }
+    .ctrl-btn.print { background:var(--p2); color:#fff; }
+
+    /* Report Card */
+    .report-card {
+      background:var(--white); border:2px solid var(--p2);
+      border-radius:14px; overflow:hidden; max-width:780px;
+      margin:0 auto; box-shadow:var(--shadow);
+    }
+
+    /* RC Header */
+    .rc-header {
+      background:linear-gradient(135deg,var(--p1),var(--p3));
+      color:#fff; text-align:center; padding:1.5rem 1rem 1.25rem;
+    }
+    .rc-header .emblem { font-size:2.5rem; margin-bottom:.5rem; }
+    .rc-header h1 { font-size:1.15rem; font-weight:900; letter-spacing:.03em; font-family:'Outfit',sans-serif; }
+    .rc-header p  { font-size:.76rem; opacity:.82; margin-top:.2rem; }
+    .rc-header .term-badge {
+      display:inline-block; background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.4); border-radius:20px;
+      padding:.25rem .9rem; font-size:.78rem; font-weight:600; margin-top:.75rem;
+    }
+
+    /* Student Info */
+    .rc-info { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); border-bottom:2px solid var(--border); }
+    .rc-info-item { padding:.75rem 1.25rem; border-right:1px solid var(--border); }
+    .rc-info-item:last-child { border-right:none; }
+    .rc-info-item .lbl { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+    .rc-info-item .val { font-size:.93rem; font-weight:700; color:var(--text); margin-top:.15rem; }
+
+    /* Position ribbon */
+    .position-ribbon {
+      text-align:center; padding:.65rem 1rem;
+      background:linear-gradient(90deg,var(--p1),var(--p3),var(--p1));
+      color:#fff; font-size:.88rem; font-weight:700;
+    }
+
+    /* Table */
+    .rc-table-wrap { overflow-x:auto; }
+    .rc-table { width:100%; border-collapse:collapse; font-size:.84rem; }
+    .rc-table thead th {
+      background:var(--p5); color:var(--p1); padding:.62rem 1rem;
+      text-align:left; font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+    }
+    .rc-table thead th:not(:first-child) { text-align:center; }
+    .rc-table td { padding:.58rem 1rem; border-bottom:1px solid #edf0f7; }
+    .rc-table td:not(:first-child) { text-align:center; }
+    .rc-table tr:last-child td { border-bottom:none; }
+    .rc-table tr:nth-child(even) td { background:#f8f9ff; }
+
+    .grade-pill { display:inline-block; padding:.15rem .55rem; border-radius:6px; font-size:.76rem; font-weight:700; }
+    .gA { background:#e8eaf6; color:#1a237e; }
+    .gB { background:#e3f2fd; color:#1565c0; }
+    .gC { background:#fff8e1; color:#e65100; }
+    .gD { background:#fff3e0; color:#bf360c; }
+    .gF { background:var(--red-l); color:var(--red); }
+
+    /* Performance bar */
+    .perf-bar-wrap { padding:1rem 1.25rem; border-top:1px solid var(--border); }
+    .perf-bar-wrap h4 { font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:.6rem; }
+    .perf-bar-track { background:var(--border); border-radius:10px; height:12px; overflow:hidden; }
+    .perf-bar-fill  { height:100%; border-radius:10px; transition:width 1.1s cubic-bezier(.4,0,.2,1); }
+    .perf-labels { display:flex; justify-content:space-between; font-size:.7rem; color:var(--muted); margin-top:.3rem; }
+
+    /* Summary */
+    .rc-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); background:var(--p5); border-top:2px solid var(--border); }
+    .rc-summary-item { padding:.9rem 1.25rem; text-align:center; border-right:1px solid var(--border); }
+    .rc-summary-item:last-child { border-right:none; }
+    .rc-summary-item .s-lbl { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+    .rc-summary-item .s-val { font-size:1.25rem; font-weight:900; color:var(--p2); margin-top:.15rem; font-family:'Outfit',sans-serif; }
+
+    /* Remarks */
+    .rc-remarks { display:none; padding:1rem 1.25rem; border-top:1px solid var(--border); background:#fafbff; }
+    .remark-row { display:flex; gap:1rem; flex-wrap:wrap; }
+    .remark-col { flex:1; min-width:200px; }
+    .remark-card { padding:.65rem .9rem; border-radius:8px; background:var(--white); border:1px solid var(--border); }
+    .remark-label { font-size:.75rem; font-weight:800; color:var(--p2); margin-bottom:.3rem; font-family:'Outfit',sans-serif; }
+    .remark-text { font-size:.88rem; color:var(--text); min-height:40px; white-space:pre-wrap; }
+
+    /* Dates */
+    .rc-dates { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); }
+    .rc-date-item { padding:.75rem 1.25rem; border-right:1px solid var(--border); }
+    .rc-date-item:last-child { border-right:none; }
+    .rc-date-item .d-lbl { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+    .rc-date-item .d-val { font-size:.88rem; font-weight:600; color:var(--text); margin-top:.15rem; }
+
+    /* Grade Key */
+    .grade-key { padding:1rem 1.25rem; border-top:1px solid var(--border); background:#fafbff; }
+    .grade-key h4 { font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:.6rem; }
+    .grade-key-grid { display:flex; flex-wrap:wrap; gap:.35rem; }
+    .gk-item { font-size:.7rem; background:var(--white); border:1px solid var(--border); border-radius:6px; padding:.2rem .5rem; }
+
+    /* Toast */
+    #toast { position:fixed; bottom:1.5rem; right:1.5rem; padding:.72rem 1.2rem; border-radius:10px; font-size:.86rem; z-index:9999; transform:translateY(20px); opacity:0; transition:all .25s; pointer-events:none; font-weight:600; max-width:300px; }
+    #toast.show { transform:translateY(0); opacity:1; }
+    #toast.success { background:var(--p2); color:#fff; }
+    #toast.error   { background:var(--red); color:#fff; }
+
+    /* Loading overlay */
+    .loading-overlay { display:none; position:fixed; inset:0; background:rgba(255,255,255,.75); backdrop-filter:blur(4px); align-items:center; justify-content:center; z-index:500; flex-direction:column; gap:1rem; }
+    .loading-overlay.show { display:flex; }
+    .loader { width:46px; height:46px; border:5px solid var(--border); border-top-color:var(--p2); border-radius:50%; animation:spin .7s linear infinite; }
+
+    /* Print */
+    @media print {
+      body { background:#fff!important; }
+      .site-header, #login-page, .result-controls, .grade-key, #toast, .loading-overlay { display:none!important; }
+      #result-page { display:block!important; padding:0; }
+      .report-card { border:1px solid #000; box-shadow:none; border-radius:0; max-width:100%; }
+      .rc-header, .rc-summary, .position-ribbon { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .rc-remarks { display:block!important; }
+    }
+    /* Export Modal */
+    .export-ov { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 1200; }
+    .export-ov.open { display:flex; }
+    .export-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.45); }
+    .export-modal { position:relative; background:var(--white); border-radius:12px; padding:1rem; width:360px; max-width:92%; box-shadow:0 18px 48px rgba(10,20,40,.25); z-index:2; }
+    .export-modal h3 { margin:0 0 .5rem 0; font-size:1rem; color:var(--p2); }
+    .export-actions { display:flex; gap:.5rem; margin-top:.75rem; justify-content:flex-end; }
+    .export-actions .btn { padding:.5rem .85rem; border-radius:8px; font-weight:700; }
+    .export-note { font-size:.86rem; color:var(--muted); margin-top:.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- Page Loading -->
+<div id="page-loading">
+  <div class="al-icon">🎓</div>
+  <div class="al-spinner"></div>
+  <p>Loading student portal…</p>
+</div>
+
+<!-- Loading overlay (for searches) -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loader"></div>
+  <p style="color:var(--p2);font-weight:600;font-family:'Outfit',sans-serif">Fetching your result…</p>
+</div>
+
+<!-- Header -->
+<header class="site-header" id="site-header" style="display:none">
+  <div class="logo">
+    <!-- <span class="logo-icon">🏫</span> -->
+     <span class="logo-icon"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></span>
+    <div class="logo-text">
+      <h1>Aleeman Primary School</h1>
+      <p>Student Portal</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="session-pill" id="session-pill"></span>
+    <button class="btn btn-ghost" id="back-to-portal-btn" style="display:inline-flex; color: white; font-size: 12px;">← Back to Portal</button>
+    <button class="btn btn-ghost-w btn-sm" id="logout-btn" style="display:none">Sign Out</button>
+  </div>
+</header>
+
+<!-- LOGIN PAGE -->
+<div id="login-page">
+  <div class="login-card">
+    <div class="card-icon">🎓</div>
+    <h2>Student Login</h2>
+    <p class="subtitle">Aleeman Primary School — Check your result</p>
+
+    <div class="fg"><label>Student Number</label><input type="text" id="inp-number" placeholder="e.g. AP12345" autocomplete="off" /></div>
+    <div class="fg">
+      <label>PIN / Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="inp-password" placeholder="Enter your PIN" autocomplete="current-password" />
+        <button class="pw-eye" type="button" id="pw-eye-btn" title="Show/hide">👁️</button>
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div class="fg"><label>Class</label>
+        <select id="inp-class"><option value="">Select class…</option></select>
+      </div>
+      <div class="fg"><label>Term</label>
+        <select id="inp-term">
+          <option value="">Select term…</option>
+          <option>First Term</option><option>Second Term</option><option>Third Term</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="fg"><label>Academic Session</label>
+      <input type="text" id="inp-session" placeholder="e.g. 2024/2025" autocomplete="off" />
+    </div>
+
+    <button class="btn btn-primary btn-full" id="check-btn">🔍 Check My Result</button>
+    <div class="err-box" id="err-box"></div>
+
+    <p style="margin-top:1.25rem;font-size:.76rem;color:var(--muted)">
+      Contact your class teacher if you don't know your Student Number or PIN.
+    </p>
+  </div>
+</div>
+
+<!-- RESULT PAGE -->
+<div id="result-page">
+  <div class="result-controls">
+    <button class="ctrl-btn back" id="back-btn">← New Search</button>
+    <button class="ctrl-btn print" id="print-btn">🖨️ Print Result</button>
+  </div>
+
+  <div class="report-card" id="report-card">
+    <!-- Header -->
+    <div class="rc-header">
+      <!-- <div class="emblem">🏫</div> -->
+       <div class="emblem"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></div>
+      <h1>ALEEMAN PRIMARY SCHOOL</h1>
+      <p id="rc-school-info">Scond To None</p>
+      <div class="term-badge" id="rc-term-badge">— Term — | Session —</div>
+    </div>
+
+    <!-- Student Info -->
+    <div class="rc-info">
+      <div class="rc-info-item"><div class="lbl">Student Name</div><div class="val" id="rc-name">—</div></div>
+      <div class="rc-info-item"><div class="lbl">Student Number</div><div class="val" id="rc-number">—</div></div>
+      <div class="rc-info-item"><div class="lbl">Class</div><div class="val" id="rc-class">—</div></div>
+      <div class="rc-info-item"><div class="lbl">Gender</div><div class="val" id="rc-gender">—</div></div>
+    </div>
+
+    <!-- Position Ribbon -->
+    <div class="position-ribbon" id="rc-position-ribbon">Computing position…</div>
+
+    <!-- Scores Table -->
+    <div class="rc-table-wrap">
+      <table class="rc-table">
+        <thead id="rc-thead">
+          <tr>
+            <th>Subject</th>
+            <th>CA (30)</th>
+            <th>Exam (70)</th>
+            <th>Total (100)</th>
+            <th>Grade</th>
+            <th>Remark</th>
+          </tr>
+        </thead>
+        <tbody id="rc-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Performance Bar -->
+    <div class="perf-bar-wrap">
+      <h4>Overall Performance</h4>
+      <div class="perf-bar-track">
+        <div class="perf-bar-fill" id="perf-bar" style="width:0;background:var(--p2)"></div>
+      </div>
+      <div class="perf-labels"><span>0%</span><span id="perf-pct">—</span><span>100%</span></div>
+    </div>
+
+    <!-- Summary -->
+    <div class="rc-summary">
+      <div class="rc-summary-item"><div class="s-lbl">Total Score</div><div class="s-val" id="rc-total">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">Average</div><div class="s-val" id="rc-average">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">Position</div><div class="s-val" id="rc-position">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">In Class of</div><div class="s-val" id="rc-outof">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">Submitted By</div><div class="s-val" id="rc-teacher" style="font-size:.85rem">—</div></div>
+    </div>
+
+    <!-- Remarks -->
+    <div class="rc-remarks" id="rc-remarks">
+      <div class="remark-row">
+        <div class="remark-col">
+          <div class="remark-card">
+            <div class="remark-label">Teacher's Remark</div>
+            <div class="remark-text" id="rc-teacher-remark">—</div>
+          </div>
+        </div>
+        <div class="remark-col">
+          <div class="remark-card">
+            <div class="remark-label">Head Teacher's Remark</div>
+            <div class="remark-text" id="rc-principal-remark">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Term Dates -->
+    <div class="rc-dates" id="rc-dates" style="display:none">
+      <div class="rc-date-item"><div class="d-lbl">Term Ends</div><div class="d-val" id="rc-term-ends">—</div></div>
+      <div class="rc-date-item"><div class="d-lbl">Next Term Begins</div><div class="d-val" id="rc-next-term">—</div></div>
+    </div>
+
+    <!-- Grade Key -->
+    <div class="grade-key">
+      <h4>Grading Scale</h4>
+      <div class="grade-key-grid">
+        <div class="gk-item"><strong>A1</strong> 75–100 Excellent</div>
+        <div class="gk-item"><strong>B2</strong> 70–74 Very Good</div>
+        <div class="gk-item"><strong>B3</strong> 65–69 Good</div>
+        <div class="gk-item"><strong>C4</strong> 60–64 Credit</div>
+        <div class="gk-item"><strong>C5</strong> 55–59 Credit</div>
+        <div class="gk-item"><strong>C6</strong> 50–54 Credit</div>
+        <div class="gk-item"><strong>D7</strong> 45–49 Pass</div>
+        <div class="gk-item"><strong>E8</strong> 40–44 Pass</div>
+        <div class="gk-item"><strong>F9</strong> 0–39 Fail</div>
+      </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="export-ov" id="export-ov" aria-hidden="true">
+      <div class="export-backdrop" id="export-backdrop"></div>
+      <div class="export-modal" role="dialog" aria-modal="true" aria-labelledby="export-title">
+        <h3 id="export-title">Print or Export Result</h3>
+        <div class="export-note">Choose whether to print the result or download a PDF. Use "Download PDF" for a direct file.</div>
+        <div class="export-actions">
+          <button class="btn" id="export-cancel">Cancel</button>
+          <button class="btn" id="export-print">Print</button>
+          <button class="btn btn-primary" id="export-pdf">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script type="module">
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const FB_CONFIG = {
+  apiKey:"AIzaSyAVD2x5XR55f_6GUBCNcfUcbT0LiTiw8VU",
+  authDomain:"aleeman-primary.firebaseapp.com",
+  projectId:"aleeman-primary",
+  storageBucket:"aleeman-primary.firebasestorage.app",
+  messagingSenderId:"120804301463",
+  appId:"1:120804301463:web:d1a84b22edd67bd36e67d2"
+};
+const app = getApps().length ? getApp() : initializeApp(FB_CONFIG);
+const db  = getFirestore(app);
+
+const DEFAULT_CLASSES_PP = ['Nursery 1','Nursery 2','Prep A','Prep B'];
+const DEFAULT_CLASSES_P  = ['Primary 1','Primary 2','Primary 3','Primary 4','Primary 5'];
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function toast(msg, type='success') {
+  const t=$('toast'); t.textContent=msg; t.className=`show ${type}`;
+  setTimeout(()=>{t.className='';},3500);
+}
+function showErr(msg) { const e=$('err-box'); e.textContent=msg; e.classList.add('show'); }
+function clearErr()   { $('err-box').classList.remove('show'); }
+function setLoading(on) {
+  $('loading-overlay').classList.toggle('show',on);
+  $('check-btn').disabled=on;
+}
+
+function resultDocId(num,cls,term,session){
+  const s=v=>String(v??'').trim().toLowerCase().replace(/\s+/g,'-').replace(/[\/\\]/g,'-').replace(/[^a-z0-9\-]/g,'');
+  return `${s(num)}__${s(cls)}__${s(term)}__${s(session)}`;
+}
+function gradeClass(g){ if(!g)return''; if(g.startsWith('A'))return'gA'; if(g.startsWith('B'))return'gB'; if(g.startsWith('C'))return'gC'; if(g.startsWith('D')||g.startsWith('E'))return'gD'; return'gF'; }
+function ordinal(n){ const s=['th','st','nd','rd'];const v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]); }
+function fmtDate(str){ if(!str)return'—'; try{const d=new Date(str);if(isNaN(d))return str;return d.toLocaleDateString('en-NG',{day:'numeric',month:'long',year:'numeric'});}catch{return str;} }
+
+/* ── Load config on startup ── */
+async function init() {
+  try {
+    const [classesSnap, sessSnap, schoolSnap] = await Promise.all([
+      getDoc(doc(db,'settings','classes')),
+      getDoc(doc(db,'settings','session')),
+      getDoc(doc(db,'settings','school')),
+    ]);
+
+    let allClasses = [];
+    if (classesSnap.exists()) {
+      const d = classesSnap.data();
+      allClasses = [...(d.prePrimary||DEFAULT_CLASSES_PP), ...(d.primary||DEFAULT_CLASSES_P)];
+    } else {
+      allClasses = [...DEFAULT_CLASSES_PP, ...DEFAULT_CLASSES_P];
+    }
+
+    const sel = $('inp-class');
+    sel.innerHTML = '<option value="">Select class…</option>' + allClasses.map(c=>`<option>${esc(c)}</option>`).join('');
+
+    if (sessSnap.exists()) {
+      const d = sessSnap.data();
+      if (d.activeSession) { $('inp-session').value=d.activeSession; $('session-pill').textContent=`${d.activeTerm||''} · ${d.activeSession}`; $('session-pill').style.display='inline'; }
+      if (d.activeTerm) $('inp-term').value = d.activeTerm;
+      // Store dates for display
+      window._sessionDates = { termEnds: d.termEnds||'', nextTerm: d.nextTermBegins||'' };
+    }
+
+    if (schoolSnap.exists()) {
+      const d = schoolSnap.data();
+      const info = [d.motto, d.address].filter(Boolean).join(' · ');
+      if (info) $('rc-school-info').textContent = info;
+    }
+  } catch(err) {
+    // Non-fatal, use defaults
+    const allClasses = [...DEFAULT_CLASSES_PP, ...DEFAULT_CLASSES_P];
+    $('inp-class').innerHTML = '<option value="">Select class…</option>' + allClasses.map(c=>`<option>${esc(c)}</option>`).join('');
+  } finally {
+    $('page-loading').style.display='none';
+    $('site-header').style.display='flex';
+    $('login-page').style.display='flex';
+  }
+}
+init();
+
+/* ── Check Result ── */
+$('check-btn').addEventListener('click', async () => {
+  clearErr();
+  const number   = $('inp-number').value.trim();
+  const password = $('inp-password').value.trim();
+  const cls      = $('inp-class').value;
+  const term     = $('inp-term').value;
+  const session  = $('inp-session').value.trim();
+
+  if (!number||!password||!cls||!term||!session) { showErr('Please fill in all fields.'); return; }
+
+  // Basic session format check
+  if (!/^\d{4}\/\d{4}$/.test(session)) { showErr('Session must be in format YYYY/YYYY (e.g. 2024/2025).'); return; }
+
+  setLoading(true);
+  try {
+    /* 1. Verify student credentials */
+    const studentQ = await getDocs(query(
+      collection(db,'students'),
+      where('number','==',number),
+      where('password','==',password),
+      where('class','==',cls)
+    ));
+    if (studentQ.empty) { showErr('Student not found. Check your number, PIN, and class.'); setLoading(false); return; }
+
+    /* 2. Fetch result */
+    const docId = resultDocId(number, cls, term, session);
+    const resSnap = await getDoc(doc(db,'results',docId));
+    if (!resSnap.exists()) {
+      showErr(`No result found for ${term} of ${session}. Contact your class teacher.`);
+      setLoading(false); return;
+    }
+
+    const result  = resSnap.data();
+    const student = studentQ.docs[0].data();
+
+    /* 3. Calculate position */
+    let position=1, classTotal=1;
+    try {
+      const allQ = await getDocs(query(
+        collection(db,'results'),
+        where('class','==',cls),
+        where('term','==',term),
+        where('session','==',session)
+      ));
+      classTotal = allQ.size;
+      const studentAvg = result.average||0;
+      let rank=1;
+      allQ.docs.forEach(d=>{ const avg=d.data().average||0; if(avg>studentAvg)rank++; });
+      position = rank;
+    } catch(e){ /* position stays 1 */ }
+
+    setLoading(false);
+    renderResult(result, student, position, classTotal);
+  } catch(err) {
+    setLoading(false);
+    showErr('Error fetching result. Check your connection and try again.');
+    console.error(err);
+  }
+});
+
+/* ── Render Result ── */
+function renderResult(result, student, position, classTotal) {
+  $('login-page').style.display='none';
+  $('result-page').style.display='block';
+  $('logout-btn').style.display='inline-flex';
+  document.querySelector('.site-header').scrollIntoView({behavior:'smooth'});
+
+  $('rc-term-badge').textContent=`${result.term}  |  ${result.session}`;
+  $('rc-name').textContent=result.studentName||'—';
+  $('rc-number').textContent=result.studentNumber||'—';
+  $('rc-class').textContent=result.class||'—';
+  $('rc-gender').textContent=student.gender||result.gender||'—';
+
+  $('rc-position-ribbon').textContent=`Class Position: ${ordinal(position)} out of ${classTotal} student${classTotal!==1?'s':''}`;
+
+  /* Build dynamic table headers based on saved assessment config */
+  const tests = result.assessmentConfig?.tests || [{id:'t1',name:'CA',max:30}];
+  const caMax = tests.reduce((s,t)=>s+Number(t.max||0),0);
+  let testHeaders = '';
+  if (tests.length > 0 && tests[0].name !== 'CA') {
+    testHeaders = tests.map(t=>`<th>${esc(t.name)}<br><span style="font-size:.65rem;font-weight:400;opacity:.7">(${t.max})</span></th>`).join('');
+  }
+
+  $('rc-thead').innerHTML=`<tr>
+    <th>Subject</th>
+    ${testHeaders}
+    <th>CA (${caMax})</th>
+    <th>Exam (70)</th>
+    <th>Total (100)</th>
+    <th>Grade</th>
+    <th>Remark</th>
+  </tr>`;
+
+  $('rc-tbody').innerHTML=(result.subjects||[]).map(s=>{
+    let testCells = '';
+    if (tests.length > 0 && tests[0].name !== 'CA') {
+      testCells = tests.map(t=>{
+        const sc=s.tests?.find(x=>x.id===t.id);
+        return `<td>${sc!=null?sc.score:'—'}</td>`;
+      }).join('');
+    }
+    return `<tr>
+      <td style="font-weight:600;white-space:nowrap">${esc(s.name)}</td>
+      ${testCells}
+      <td>${s.caTotal??'—'}</td>
+      <td>${s.exam??'—'}</td>
+      <td><strong>${s.total}</strong></td>
+      <td><span class="grade-pill ${gradeClass(s.grade)}">${s.grade||'—'}</span></td>
+      <td>${s.remark||'—'}</td>
+    </tr>`;
+  }).join('');
+
+  const avg = result.average!=null ? result.average.toFixed(1) : '—';
+  $('rc-total').textContent=result.totalScore??'—';
+  $('rc-average').textContent=avg+(avg!=='—'?'%':'');
+  $('rc-position').textContent=ordinal(position);
+  $('rc-outof').textContent=classTotal;
+  $('rc-teacher').textContent=result.submittedBy||'—';
+
+  const pct = result.average!=null ? Math.min(result.average,100) : 0;
+  setTimeout(()=>{
+    $('perf-bar').style.width=pct+'%';
+    $('perf-bar').style.background = pct>=70?'var(--p2)':pct>=50?'var(--amber)':'var(--red)';
+  },100);
+  $('perf-pct').textContent=avg+(avg!=='—'?'%':'');
+
+  const tRemark = result.teacherRemark||'';
+  const pRemark = result.principalRemark||'';
+  $('rc-teacher-remark').textContent=tRemark||'—';
+  $('rc-principal-remark').textContent=pRemark||'—';
+  $('rc-remarks').style.display=(tRemark||pRemark)?'block':'none';
+
+  // Show term dates if available
+  const dates = window._sessionDates||{};
+  if (dates.termEnds||dates.nextTerm) {
+    $('rc-term-ends').textContent=fmtDate(dates.termEnds);
+    $('rc-next-term').textContent=fmtDate(dates.nextTerm);
+    $('rc-dates').style.display='grid';
+  }
+}
+
+/* ── Controls ── */
+$('pw-eye-btn').addEventListener('click',function(){
+  const inp=$('inp-password');const show=inp.type==='password';
+  inp.type=show?'text':'password';this.textContent=show?'🙈':'👁️';
+});
+
+// Back to portal (index)
+document.getElementById('back-to-portal-btn').addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
+$('back-btn').addEventListener('click',()=>{
+  $('result-page').style.display='none';
+  $('login-page').style.display='flex';
+  $('logout-btn').style.display='none';
+  document.querySelector('.site-header').scrollIntoView({behavior:'smooth'});
+});
+
+$('logout-btn').addEventListener('click',()=>{
+  $('result-page').style.display='none';
+  $('login-page').style.display='flex';
+  $('logout-btn').style.display='none';
+  clearErr();
+  $('inp-password').value='';
+  document.querySelector('.site-header').scrollIntoView({behavior:'smooth'});
+});
+
+/* Export modal logic (Print / PDF) */
+const exportOv = $('export-ov');
+const exportBackdrop = $('export-backdrop');
+const exportCancel = $('export-cancel');
+const exportPrint = $('export-print');
+const exportPdf = $('export-pdf');
+const openExportBtn = $('print-btn');
+
+function openExportModal() { exportOv.classList.add('open'); exportOv.setAttribute('aria-hidden','false'); }
+function closeExportModal(){ exportOv.classList.remove('open'); exportOv.setAttribute('aria-hidden','true'); }
+
+openExportBtn.addEventListener('click', openExportModal);
+exportCancel.addEventListener('click', closeExportModal);
+exportBackdrop.addEventListener('click', closeExportModal);
+
+exportPrint.addEventListener('click', () => {
+  closeExportModal();
+  setTimeout(()=>window.print(),150);
+});
+
+function ensureHtml2PdfLoaded() {
+  return new Promise((resolve, reject) => {
+    if (window.html2pdf) return resolve(window.html2pdf);
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js';
+    s.onload = () => { if (window.html2pdf) resolve(window.html2pdf); else reject(new Error('html2pdf failed')); };
+    s.onerror = () => reject(new Error('Failed to load html2pdf'));
+    document.head.appendChild(s);
+  });
+}
+
+exportPdf.addEventListener('click', async () => {
+  closeExportModal();
+  try {
+    const el = $('report-card');
+    if (!el) { showErr('Nothing to export'); return; }
+    setLoading(true);
+    await ensureHtml2PdfLoaded();
+    const opt = {
+      margin: 0.4,
+      filename: `${$('rc-number').textContent || 'result'}.pdf`,
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    window.html2pdf().set(opt).from(el).save().then(()=>setLoading(false)).catch(err=>{ setLoading(false); showErr('Failed to generate PDF.'); console.error(err); });
+  } catch(err) { setLoading(false); showErr('Failed to export PDF.'); console.error(err); }
+});
+
+// Enter key support
+['inp-number','inp-password','inp-session'].forEach(id=>{
+  $(id).addEventListener('keydown',e=>{ if(e.key==='Enter')$('check-btn').click(); });
+});
+</script>
+</body>
+</html>
