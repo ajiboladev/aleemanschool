@@ -11,7 +11,7 @@
   <title>Result Checker — Aleeman School</title>
     <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
 
-      <script>window.FLOATING_TEXT = 'Proudly 2025/2026';</script>
+      <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
 <script src="../floating.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -293,13 +293,13 @@
 
     <div class="form-grid">
       <div class="form-group">
-        <label>Student Number</label>
-        <input type="text" id="inp-number" placeholder="e.g. AL12345" />
-      </div>
-      <div class="form-group">
-        <label>PIN / Password</label>
-        <input type="password" id="inp-password" placeholder="••••••" />
-      </div>
+  <label>Email Address</label>
+  <input type="email" id="inp-number" placeholder="student@aleeman.edu.ng" autocomplete="email" />
+</div>
+<div class="form-group">
+  <label>Password</label>
+  <input type="password" id="inp-password" placeholder="••••••" />
+</div>
       <div class="form-group">
         <label>Class</label>
         <select id="inp-class">
@@ -491,7 +491,11 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
-                         from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, signOut }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyD8fS0g_IU9RKBdyhx-WmFZZbttEbCC464",
@@ -503,6 +507,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
+const auth = getAuth(app);
 
 function showError(msg) {
   const el = document.getElementById('error-box');
@@ -538,45 +543,64 @@ function ordinal(n) {
 /* ── Search ── */
 document.getElementById('search-btn').addEventListener('click', async () => {
   clearError();
-  const number  = document.getElementById('inp-number').value.trim();
+  const email   = document.getElementById('inp-number').value.trim();
   const password= document.getElementById('inp-password').value.trim();
   const cls     = document.getElementById('inp-class').value;
   const term    = document.getElementById('inp-term').value;
   const session = document.getElementById('inp-session').value.trim();
 
-  if (!number || !password || !cls || !term || !session) {
+  if (!email || !password || !cls || !term || !session) {
     showError('Please fill in all fields.'); return;
+  }
+  if (!/^\d{4}\/\d{4}$/.test(session)) {
+    showError('Session must be in format YYYY/YYYY (e.g. 2024/2025).'); return;
   }
 
   setLoading(true);
   try {
-    /* Step 1: Verify student credentials */
-    const studentQ = await getDocs(query(
-      collection(db,'students'),
-      where('number','==',number),
-      where('password','==',password),
-      where('class','==',cls)
-    ));
-
-    if (studentQ.empty) {
-      showError('Student not found. Check your number, PIN, and class.'); setLoading(false); return;
-    }
-
-    /* Step 2: Fetch result */
-    const docId  = resultDocId(number, cls, term, session);
-    const resSnap= await getDoc(doc(db,'results', docId));
-
-    if (!resSnap.exists()) {
-      showError(`No result found for ${term} of ${session}. Please check your details or contact your class teacher.`);
+    /* Step 1: Authenticate student via Firebase Auth */
+    let uid;
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      uid = cred.user.uid;
+      await signOut(auth); // Sign out immediately after getting UID
+    } catch(authErr) {
+      const m = {
+        'auth/invalid-credential': 'Incorrect email or password.',
+        'auth/user-not-found': 'No account found with that email.',
+        'auth/wrong-password': 'Incorrect password.',
+        'auth/too-many-requests': 'Too many attempts. Please wait and try again.',
+        'auth/invalid-email': 'Please enter a valid email address.',
+      };
+      showError(m[authErr.code] || 'Login failed. Check your email and password.');
       setLoading(false); return;
     }
 
-    const result  = resSnap.data();
-    const student = studentQ.docs[0].data();
+    /* Step 2: Fetch student Firestore doc using UID */
+    const studentSnap = await getDoc(doc(db, 'students', uid));
+    if (!studentSnap.exists()) {
+      showError('Student record not found. Contact your school admin.'); setLoading(false); return;
+    }
+    const student = studentSnap.data();
 
-    /* Step 3: Calculate position */
-    let position    = 1;
-    let classTotal  = 1;
+    // Verify the class matches what the student selected
+    if (student.class !== cls) {
+      showError(`You are registered under ${student.class}, not ${cls}. Please select the correct class.`);
+      setLoading(false); return;
+    }
+
+    /* Step 3: Fetch result — result uses UID as the student number */
+    const docId   = resultDocId(uid, cls, term, session);
+    const resSnap = await getDoc(doc(db, 'results', docId));
+    if (!resSnap.exists()) {
+      showError(`No result found for ${term} of ${session}. Contact your class teacher.`);
+      setLoading(false); return;
+    }
+
+    const result = resSnap.data();
+
+    /* Step 4: Calculate position */
+    let position = 1, classTotal = 1;
     try {
       const allQ = await getDocs(query(
         collection(db,'results'),
@@ -585,15 +609,9 @@ document.getElementById('search-btn').addEventListener('click', async () => {
         where('session','==',session)
       ));
       classTotal = allQ.size;
-      const averages = allQ.docs.map(d => d.data().average || 0);
-      averages.sort((a,b) => b-a);
       const studentAvg = result.average || 0;
-      position = averages.indexOf(studentAvg) + 1;
-      // Handle ties: find exact rank
       let rank = 1;
-      for (const avg of averages) {
-        if (avg > studentAvg) rank++;
-      }
+      allQ.docs.forEach(d => { if ((d.data().average||0) > studentAvg) rank++; });
       position = rank;
     } catch(e) { /* position stays 1 */ }
 

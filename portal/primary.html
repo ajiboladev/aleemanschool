@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" href="../aleeman-logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
-    <script>window.FLOATING_TEXT = 'Proudly 2025/2026';</script>
+    <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
 <script src="../floating.js"></script>
   <style>
     * {
@@ -258,7 +258,7 @@
     <h2>Student Login</h2>
     <p class="subtitle">Aleeman Primary School — Check your result</p>
 
-    <div class="fg"><label>Student Number</label><input type="text" id="inp-number" placeholder="e.g. AP12345" autocomplete="off" /></div>
+    <div class="fg"><label>Email Address</label><input type="email" id="inp-number" placeholder="student@aleeman.edu.ng" autocomplete="email" /></div>
     <div class="fg">
       <label>PIN / Password</label>
       <div class="pw-wrap">
@@ -417,6 +417,10 @@
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, signOut }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
 
 const FB_CONFIG = {
   apiKey:"AIzaSyAVD2x5XR55f_6GUBCNcfUcbT0LiTiw8VU",
@@ -428,6 +432,7 @@ const FB_CONFIG = {
 };
 const app = getApps().length ? getApp() : initializeApp(FB_CONFIG);
 const db  = getFirestore(app);
+const auth = getAuth(app);
 
 const DEFAULT_CLASSES_PP = ['Nursery 1','Nursery 2','Prep A','Prep B'];
 const DEFAULT_CLASSES_P  = ['Primary 1','Primary 2','Primary 3','Primary 4','Primary 5'];
@@ -502,40 +507,57 @@ init();
 /* ── Check Result ── */
 $('check-btn').addEventListener('click', async () => {
   clearErr();
-  const number   = $('inp-number').value.trim();
+  const email    = $('inp-number').value.trim();
   const password = $('inp-password').value.trim();
   const cls      = $('inp-class').value;
   const term     = $('inp-term').value;
   const session  = $('inp-session').value.trim();
 
-  if (!number||!password||!cls||!term||!session) { showErr('Please fill in all fields.'); return; }
-
-  // Basic session format check
+  if (!email||!password||!cls||!term||!session) { showErr('Please fill in all fields.'); return; }
   if (!/^\d{4}\/\d{4}$/.test(session)) { showErr('Session must be in format YYYY/YYYY (e.g. 2024/2025).'); return; }
 
   setLoading(true);
   try {
-    /* 1. Verify student credentials */
-    const studentQ = await getDocs(query(
-      collection(db,'students'),
-      where('number','==',number),
-      where('password','==',password),
-      where('class','==',cls)
-    ));
-    if (studentQ.empty) { showErr('Student not found. Check your number, PIN, and class.'); setLoading(false); return; }
+    /* Step 1: Authenticate via Firebase Auth */
+    let uid;
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      uid = cred.user.uid;
+      await signOut(auth);
+    } catch(authErr) {
+      const m = {
+        'auth/invalid-credential': 'Incorrect email or password.',
+        'auth/user-not-found': 'No account found with that email.',
+        'auth/wrong-password': 'Incorrect password.',
+        'auth/too-many-requests': 'Too many attempts. Please wait.',
+        'auth/invalid-email': 'Please enter a valid email address.',
+      };
+      showErr(m[authErr.code] || 'Login failed. Check your email and password.');
+      setLoading(false); return;
+    }
 
-    /* 2. Fetch result */
-    const docId = resultDocId(number, cls, term, session);
-    const resSnap = await getDoc(doc(db,'results',docId));
+    /* Step 2: Fetch student document */
+    const studentSnap = await getDoc(doc(db, 'students', uid));
+    if (!studentSnap.exists()) {
+      showErr('Student record not found. Contact your school admin.'); setLoading(false); return;
+    }
+    const student = studentSnap.data();
+
+    if (student.class !== cls) {
+      showErr(`You are registered under class ${student.class}. Please select the correct class.`);
+      setLoading(false); return;
+    }
+
+    /* Step 3: Fetch result */
+    const docId = resultDocId(uid, cls, term, session);
+    const resSnap = await getDoc(doc(db, 'results', docId));
     if (!resSnap.exists()) {
       showErr(`No result found for ${term} of ${session}. Contact your class teacher.`);
       setLoading(false); return;
     }
+    const result = resSnap.data();
 
-    const result  = resSnap.data();
-    const student = studentQ.docs[0].data();
-
-    /* 3. Calculate position */
+    /* Step 4: Calculate position */
     let position=1, classTotal=1;
     try {
       const allQ = await getDocs(query(
@@ -547,9 +569,9 @@ $('check-btn').addEventListener('click', async () => {
       classTotal = allQ.size;
       const studentAvg = result.average||0;
       let rank=1;
-      allQ.docs.forEach(d=>{ const avg=d.data().average||0; if(avg>studentAvg)rank++; });
-      position = rank;
-    } catch(e){ /* position stays 1 */ }
+      allQ.docs.forEach(d=>{ if((d.data().average||0)>studentAvg)rank++; });
+      position=rank;
+    } catch(e){ /* stays 1 */ }
 
     setLoading(false);
     renderResult(result, student, position, classTotal);
