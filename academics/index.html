@@ -48,97 +48,173 @@
     </section>
 
     <!-- Curriculum Section -->
-    <section class="curriculum-section" id="curriculum">
-        <div class="container">
-            <h2 class="section-title">Our Curriculum</h2>
-            <p class="section-subtitle">Combining Modern Science with Traditional Arabic Studies</p>
+    <!-- Curriculum Section -->
+<section class="curriculum-section" id="curriculum">
+    <div class="container">
+        <h2 class="section-title">Our Curriculum</h2>
+        <p class="section-subtitle">Combining Modern Science with Traditional Arabic Studies</p>
+        
+        <div class="curriculum-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="western">Western Program</button>
+                <button class="tab-btn" data-tab="arabic">Arabic Program</button>
+                <button class="tab-btn" data-tab="quran">Quran Program</button>
+            </div>
             
-            <div class="curriculum-tabs">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" data-tab="science">Science Program</button>
-                    <button class="tab-btn" data-tab="arabic">Arabic Program</button>
-                    <button class="tab-btn" data-tab="combined">Combined Program</button>
+            <div class="tab-content">
+
+                <!-- WESTERN PROGRAM -->
+                <div class="tab-pane active" id="western">
+                    <h3>Western Program</h3>
+
+                    <!-- Secondary -->
+                    <div class="program-level-label">
+                        <i class="fas fa-school"></i> Secondary School
+                    </div>
+                    <div class="program-details">
+                        <div class="program-card">
+                            <h4><i class="fas fa-user-graduate"></i> Senior Secondary</h4>
+                            
+                            <ul>
+                                <h4><i class="fa-solid fa-coins"><strong>Fees:</strong></i></h4>
+                                <li>Mathematics</li>
+                                <li>English Language</li>
+                                <li>Physics / Account</li>
+                                <li>Chemistry / Government</li>
+                                <li>Biology</li>
+                                <li>Further Mathematics</li>
+                                <li>Data Processing</li>
+                                <li>Geography / Economics</li>
+                                <li>Islamic Studies</li>
+                                <li>Yoruba Language</li>
+                            </ul>
+                        </div>
+                        <div class="program-card">
+                            <h4><i class="fas fa-book-open"></i> Junior Secondary</h4>
+                            <ul>
+                                <h4><i class="fa-solid fa-coins"><strong>Fees:</strong></i></h4>
+                                <li>Mathematics</li>
+                                <li>English Language</li>
+                                <li>Basic Science</li>
+                                <li>Basic Technology</li>
+                                <li>National Values</li>
+                                <li>Business Studies</li>
+                                <li>Computer Studies</li>
+                                <li>Science</li>
+                                <li>Islamic Religious Studies</li>
+                                <li>Pre-Vocational studies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Primary -->
+                    <div class="program-level-label" style="margin-top: 2rem;">
+                        <i class="fas fa-child"></i> Primary School
+                    </div>
+                    <div class="program-details">
+                        <div class="program-card">
+                            <h4><i class="fas fa-star"></i> Pre-Primary (Nursery 1, Nursery 2, Prep A)</h4>
+                            <ul>
+                                <h4><i class="fa-solid fa-coins"><strong>Fees:</strong></i></h4>
+                                <li>English Language</li>
+                                <li>Mathematics</li>
+                                <li>Phonics</li>
+                                <li>Rhymes</li>
+                                <li>Verbal Reasoning</li>
+                                <li>Quantitative Reasoning</li>
+                                <li>Rhymes &amp; Songs</li>
+                                <li>Arabic</li>
+                                <li>Quran</li>
+                            </ul>
+                        </div>
+                        <div class="program-card">
+                            <h4><i class="fas fa-pencil-alt"></i> Primary (Prep B &amp; Primary 1 – 5)</h4>
+                            <ul>
+                                <h4><i class="fa-solid fa-coins"><strong>Fees:</strong></i></h4>
+                                <li>English Language</li>
+                                <li>Mathematics</li>
+                                <li>Basic Science &amp; Tech </li>
+                                <li>Yoruba Language</li>
+                                <li>Phonics</li>
+                                <li>Islamic Religious Studies</li>
+                                <li>Arabic Language</li>
+                                <li>Verbal Reasoning</li>
+                                <li>Quantitative Reasoning</li>
+                                <li>Hand Writing</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="tab-content">
-                    <div class="tab-pane active" id="science">
-                        <h3>Science Program</h3>
-                        <div class="program-details">
-                            <div class="program-card">
-                                <h4><i class="fas fa-flask"></i> Core Subjects</h4>
-                                <ul>
-                                    <li>Mathematics</li>
-                                    <li>Physics</li>
-                                    <li>Chemistry</li>
-                                    <li>Biology</li>
-                                    <li>Further Mathematics</li>
-                                    <li>Computer Science</li>
-                                </ul>
-                            </div>
-                            <div class="program-card">
-                                <h4><i class="fas fa-graduation-cap"></i> Supporting Subjects</h4>
-                                <ul>
-                                    <li>English Language</li>
-                                    <li>Islamic Studies</li>
-                                    <li>Geography/Economics</li>
-                                    <li>Physical Education</li>
-                                </ul>
-                            </div>
+
+                <!-- ARABIC PROGRAM -->
+                <div class="tab-pane" id="arabic">
+                    <h3>Arabic &amp; Islamic Studies Program</h3>
+                    <div class="program-details">
+                        <div class="program-card">
+                            <h4><i class="fas fa-book-quran"></i> Core Subjects</h4>
+                            <ul>
+                                <h4><i class="fa-solid fa-coins"><strong>Fees:</strong></i></h4>
+                                <li>Qur'anic Studies (Hifz &amp; Tajweed)</li>
+                                <li>Arabic Language (Reading &amp; Writing)</li>
+                                <li>Islamic Jurisprudence (Fiqh)</li>
+                                <li>Prophetic Traditions (Hadith)</li>
+                                <li>Islamic History</li>
+                                <li>Arabic Literature</li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <div class="tab-pane" id="arabic">
-                        <h3>Arabic & Islamic Studies Program</h3>
-                        <div class="program-details">
-                            <div class="program-card">
-                                <h4><i class="fas fa-book-quran"></i> Core Subjects</h4>
-                                <ul>
-                                    <li>Qur'anic Studies (Hifz & Tajweed)</li>
-                                    <li>Arabic Language (Reading & Writing)</li>
-                                    <li>Islamic Jurisprudence (Fiqh)</li>
-                                    <li>Prophetic Traditions (Hadith)</li>
-                                    <li>Islamic History</li>
-                                    <li>Arabic Literature</li>
-                                </ul>
-                            </div>
-                            <div class="program-card">
-                                <h4><i class="fas fa-language"></i> Language Focus</h4>
-                                <ul>
-                                    <li>Modern Standard Arabic</li>
-                                    <li>Arabic Grammar (Nahw & Sarf)</li>
-                                    <li>Arabic Conversation</li>
-                                    <li>Translation Studies</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-pane" id="combined">
-                        <h3>Combined Program (Science & Arabic)</h3>
-                        <div class="program-details">
-                            <div class="program-card">
-                                <h4><i class="fas fa-atom"></i> Science Subjects</h4>
-                                <ul>
-                                    <li>Mathematics</li>
-                                    <li>Physics/Chemistry</li>
-                                    <li>Biology</li>
-                                </ul>
-                            </div>
-                            <div class="program-card">
-                                <h4><i class="fas fa-mosque"></i> Arabic Subjects</h4>
-                                <ul>
-                                    <li>Qur'anic Studies</li>
-                                    <li>Arabic Language</li>
-                                    <li>Islamic Studies</li>
-                                </ul>
-                            </div>
+                        <div class="program-card">
+                            <h4><i class="fas fa-language"></i> Language Focus</h4>
+                            <ul>
+                                <li>Modern Standard Arabic</li>
+                                <li>Arabic Grammar (Nahw &amp; Sarf)</li>
+                                <li>Arabic Conversation</li>
+                                <li>Translation Studies</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+
+                <!-- QURAN PROGRAM -->
+                <div class="tab-pane" id="quran">
+                    <h3>Quran Program</h3>
+                    <div class="program-details">
+                        <!-- <div class="program-card">
+                            <h4><i class="fas fa-atom"></i> Science Subjects</h4>
+                            <ul>
+                                <li>Mathematics</li>
+                                <li>Physics / Chemistry</li>
+                                <li>Biology</li>
+                            </ul>
+                        </div> -->
+                        <div class="program-card">
+                            <h4><i class="fas fa-mosque"></i>Quran</h4>
+                            <ul>
+                                <li>Qur'anic Memorization</li>
+                                <li>Arabic Language</li>
+                                <li>Islamic Studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+<style>
+    .program-level-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color, #1a237e);
+    margin-bottom: 1rem;
+    padding: .5rem 0;
+    border-bottom: 2px solid #e8eaf6;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+</style>
     <!-- Departments Section -->
     <section class="departments-section">
         <div class="container">

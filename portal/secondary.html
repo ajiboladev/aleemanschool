@@ -416,7 +416,7 @@
         <div class="s-lbl">In Class of</div>
         <div class="s-val" id="rc-outof">—</div>
       </div>
-      <div class="rc-summary-item">
+      <div class="rc-summary-item" style="display: none;">
         <div class="s-lbl">Submitted By</div>
         <div class="s-val" id="rc-teacher" style="font-size:.9rem">—</div>
       </div>
@@ -563,7 +563,7 @@ document.getElementById('search-btn').addEventListener('click', async () => {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       uid = cred.user.uid;
-      await signOut(auth); // Sign out immediately after getting UID
+      // await signOut(auth); // Sign out immediately after getting UID
     } catch(authErr) {
       const m = {
         'auth/invalid-credential': 'Incorrect email or password.',
@@ -582,6 +582,13 @@ document.getElementById('search-btn').addEventListener('click', async () => {
       showError('Student record not found. Contact your school admin.'); setLoading(false); return;
     }
     const student = studentSnap.data();
+
+    // ── PAYMENT CHECK ──────────────────────────────────────────
+if (!student.hasPaid) {
+  showError('⚠️ Your result is not available. Please contact the Principal to confirm your payment status.');
+  setLoading(false); return;
+}
+// ──────────────────────────────────────────────────────────
 
     // Verify the class matches what the student selected
     if (student.class !== cls) {
@@ -615,8 +622,10 @@ document.getElementById('search-btn').addEventListener('click', async () => {
       position = rank;
     } catch(e) { /* position stays 1 */ }
 
+    await signOut(auth);
     setLoading(false);
     renderResult(result, student, position, classTotal);
+    
   } catch(e) {
     setLoading(false);
     showError('Error fetching result. Check your connection and try again.');

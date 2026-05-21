@@ -352,7 +352,7 @@
       <div class="rc-summary-item"><div class="s-lbl">Average</div><div class="s-val" id="rc-average">—</div></div>
       <div class="rc-summary-item"><div class="s-lbl">Position</div><div class="s-val" id="rc-position">—</div></div>
       <div class="rc-summary-item"><div class="s-lbl">In Class of</div><div class="s-val" id="rc-outof">—</div></div>
-      <div class="rc-summary-item"><div class="s-lbl">Submitted By</div><div class="s-val" id="rc-teacher" style="font-size:.85rem">—</div></div>
+      <div class="rc-summary-item" style="display: none;"><div class="s-lbl">Submitted By</div><div class="s-val" id="rc-teacher" style="font-size:.85rem">—</div></div>
     </div>
 
     <!-- Remarks -->
@@ -523,7 +523,7 @@ $('check-btn').addEventListener('click', async () => {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       uid = cred.user.uid;
-      await signOut(auth);
+      // await signOut(auth);
     } catch(authErr) {
       const m = {
         'auth/invalid-credential': 'Incorrect email or password.',
@@ -542,6 +542,13 @@ $('check-btn').addEventListener('click', async () => {
       showErr('Student record not found. Contact your school admin.'); setLoading(false); return;
     }
     const student = studentSnap.data();
+
+    // ── PAYMENT CHECK ──────────────────────────────────────────
+if (!student.hasPaid) {
+  showErr('⚠️ Your result is not available. Please contact the Principal to confirm your payment status.');
+  setLoading(false); return;
+}
+// ──────────────────────────────────────────────────────────
 
     if (student.class !== cls) {
       showErr(`You are registered under class ${student.class}. Please select the correct class.`);
@@ -573,8 +580,10 @@ $('check-btn').addEventListener('click', async () => {
       position=rank;
     } catch(e){ /* stays 1 */ }
 
+await signOut(auth); 
     setLoading(false);
     renderResult(result, student, position, classTotal);
+    
   } catch(err) {
     setLoading(false);
     showErr('Error fetching result. Check your connection and try again.');
