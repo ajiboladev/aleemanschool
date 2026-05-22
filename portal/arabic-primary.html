@@ -3,32 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no, viewport-fit=cover" />
-  <title>Student Portal — Aleeman Primary School</title>
+  <title>Student Portal — Aleeman Arabic Primary</title>
   <link rel="icon" type="image/x-icon" href="../aleeman-logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
-<script src="../floating.js"></script>
+  <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
+  <script src="../floating.js"></script>
+
+  <meta name="application-name" content="Aleeman Arabic Primary" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Aleeman Arabic Primary Result" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#1a4731" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../aleeman-logo.png" />
+
   <style>
     * {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  box-sizing: border-box;
-}
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      box-sizing: border-box;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --p1:#1a237e; --p2:#283593; --p3:#3949ab; --p4:#5c6bc0; --p5:#e8eaf6;
+      --p1:#1a4731; --p2:#1e5c3a; --p3:#2d7a52; --p4:#4a9e73; --p5:#e8f5ef;
       --green:#1a5c2a; --green-l:#d8f3dc;
       --red:#c62828; --red-l:#ffebee;
       --amber:#f57f17; --amber-l:#fff8e1;
-      --text:#111827; --muted:#4b5563; --border:#c5cae9; --bg:#f0f2ff; --white:#fff;
-      --shadow:0 4px 24px rgba(26,35,126,.12);
+      --gold:#b8860b;
+      --text:#1a2e22; --muted:#4a6551; --border:#c8e6c9; --bg:#f0fdf4; --white:#fff;
+      --shadow:0 4px 24px rgba(26,71,49,.12);
     }
-    * { -webkit-user-select:none; -ms-user-select:none; user-select:none; }
     body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
     h1,h2,h3,h4 { font-family:'Outfit',sans-serif; }
+    .ar { font-family:'Noto Naskh Arabic', serif; direction:rtl; unicode-bidi:isolate; font-weight:600; }
 
     /* ── LOADING ── */
     #page-loading { position:fixed; inset:0; background:linear-gradient(135deg,var(--p1),var(--p3)); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:99999; gap:1.25rem; }
@@ -54,6 +64,7 @@
     .login-card {
       background:var(--white); border-radius:20px; padding:2.5rem 2rem;
       width:100%; max-width:440px; box-shadow:var(--shadow); text-align:center;
+      border-top:4px solid var(--gold);
     }
     .login-card .card-icon { font-size:3rem; margin-bottom:.6rem; }
     .login-card h2 { font-size:1.4rem; color:var(--p2); margin-bottom:.25rem; }
@@ -65,7 +76,7 @@
       width:100%; padding:.72rem .95rem; border:1.5px solid var(--border); border-radius:10px;
       font-size:.92rem; outline:none; transition:border .2s; font-family:inherit; background:var(--white);
     }
-    .fg input:focus,.fg select:focus { border-color:var(--p2); box-shadow:0 0 0 3px rgba(40,53,147,.08); }
+    .fg input:focus,.fg select:focus { border-color:var(--p2); box-shadow:0 0 0 3px rgba(30,92,58,.08); }
 
     .pw-wrap { position:relative; }
     .pw-wrap input { padding-right:2.6rem !important; }
@@ -110,9 +121,11 @@
     .rc-header {
       background:linear-gradient(135deg,var(--p1),var(--p3));
       color:#fff; text-align:center; padding:1.5rem 1rem 1.25rem;
+      border-bottom:3px solid var(--gold);
     }
     .rc-header .emblem { font-size:2.5rem; margin-bottom:.5rem; }
     .rc-header h1 { font-size:1.15rem; font-weight:900; letter-spacing:.03em; font-family:'Outfit',sans-serif; }
+    .rc-header .ar-school { font-size:1rem; margin-top:.35rem; opacity:.92; }
     .rc-header p  { font-size:.76rem; opacity:.82; margin-top:.2rem; }
     .rc-header .term-badge {
       display:inline-block; background:rgba(255,255,255,.18);
@@ -130,7 +143,7 @@
     /* Position ribbon */
     .position-ribbon {
       text-align:center; padding:.65rem 1rem;
-      background:linear-gradient(90deg,var(--p1),var(--p3),var(--p1));
+      background:linear-gradient(90deg,var(--p1),var(--gold),var(--p1));
       color:#fff; font-size:.88rem; font-weight:700;
     }
 
@@ -142,13 +155,13 @@
       text-align:left; font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
     }
     .rc-table thead th:not(:first-child) { text-align:center; }
-    .rc-table td { padding:.58rem 1rem; border-bottom:1px solid #edf0f7; }
+    .rc-table td { padding:.58rem 1rem; border-bottom:1px solid #e0f0e4; }
     .rc-table td:not(:first-child) { text-align:center; }
     .rc-table tr:last-child td { border-bottom:none; }
-    .rc-table tr:nth-child(even) td { background:#f8f9ff; }
+    .rc-table tr:nth-child(even) td { background:#f8fdf8; }
 
     .grade-pill { display:inline-block; padding:.15rem .55rem; border-radius:6px; font-size:.76rem; font-weight:700; }
-    .gA { background:#e8eaf6; color:#1a237e; }
+    .gA { background:#e8f5e9; color:#1a5c2a; }
     .gB { background:#e3f2fd; color:#1565c0; }
     .gC { background:#fff8e1; color:#e65100; }
     .gD { background:#fff3e0; color:#bf360c; }
@@ -169,7 +182,7 @@
     .rc-summary-item .s-val { font-size:1.25rem; font-weight:900; color:var(--p2); margin-top:.15rem; font-family:'Outfit',sans-serif; }
 
     /* Remarks */
-    .rc-remarks { display:none; padding:1rem 1.25rem; border-top:1px solid var(--border); background:#fafbff; }
+    .rc-remarks { display:none; padding:1rem 1.25rem; border-top:1px solid var(--border); background:#fafffe; }
     .remark-row { display:flex; gap:1rem; flex-wrap:wrap; }
     .remark-col { flex:1; min-width:200px; }
     .remark-card { padding:.65rem .9rem; border-radius:8px; background:var(--white); border:1px solid var(--border); }
@@ -184,7 +197,7 @@
     .rc-date-item .d-val { font-size:.88rem; font-weight:600; color:var(--text); margin-top:.15rem; }
 
     /* Grade Key */
-    .grade-key { padding:1rem 1.25rem; border-top:1px solid var(--border); background:#fafbff; }
+    .grade-key { padding:1rem 1.25rem; border-top:1px solid var(--border); background:#fafffe; }
     .grade-key h4 { font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:.6rem; }
     .grade-key-grid { display:flex; flex-wrap:wrap; gap:.35rem; }
     .gk-item { font-size:.7rem; background:var(--white); border:1px solid var(--border); border-radius:6px; padding:.2rem .5rem; }
@@ -224,7 +237,7 @@
 
 <!-- Page Loading -->
 <div id="page-loading">
-  <div class="al-icon">🎓</div>
+  <div class="al-icon">🕌</div>
   <div class="al-spinner"></div>
   <p>Loading student portal…</p>
 </div>
@@ -238,11 +251,10 @@
 <!-- Header -->
 <header class="site-header" id="site-header" style="display:none">
   <div class="logo">
-    <!-- <span class="logo-icon">🏫</span> -->
-     <span class="logo-icon"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></span>
+    <span class="logo-icon"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></span>
     <div class="logo-text">
-      <h1>Aleeman Primary School</h1>
-      <p>Student Portal</p>
+      <h1>Aleeman Arabic Primary</h1>
+      <p>Student Portal · <span class="ar">المدرسة الإبتدائية</span></p>
     </div>
   </div>
   <div class="header-right">
@@ -255,9 +267,9 @@
 <!-- LOGIN PAGE -->
 <div id="login-page">
   <div class="login-card">
-    <div class="card-icon">🎓</div>
+    <div class="card-icon">🕌</div>
     <h2>Student Login</h2>
-    <p class="subtitle">Aleeman Primary School — Check your result</p>
+    <p class="subtitle">Aleeman Arabic Primary — Check your result · <span class="ar">قسم الدراسات العربية والإسلامية</span></p>
 
     <div class="fg"><label>Email Address</label><input type="email" id="inp-number" placeholder="student@aleeman.edu.ng" autocomplete="email" /></div>
     <div class="fg">
@@ -275,7 +287,7 @@
       <div class="fg"><label>Term</label>
         <select id="inp-term">
           <option value="">Select term…</option>
-          <option>First Term</option><option>Second Term</option><option>Third Term</option>
+          <option>First Term</option><option>Second Term</option>
         </select>
       </div>
     </div>
@@ -288,7 +300,7 @@
     <div class="err-box" id="err-box"></div>
 
     <p style="margin-top:1.25rem;font-size:.76rem;color:var(--muted)">
-      Contact your class teacher if you don't know your Student Number or PIN.
+      Contact your class teacher if you don't know your Email or PIN.
     </p>
   </div>
 </div>
@@ -303,10 +315,10 @@
   <div class="report-card" id="report-card">
     <!-- Header -->
     <div class="rc-header">
-      <!-- <div class="emblem">🏫</div> -->
-       <div class="emblem"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></div>
-      <h1>ALEEMAN PRIMARY SCHOOL</h1>
-      <p id="rc-school-info">Scond To None</p>
+      <div class="emblem"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></div>
+      <h1>ALEEMAN SCHOOL — ARABIC PRIMARY SECTION</h1>
+      <div class="ar-school"><span class="ar">مدرسة العليمان للدراسات العربية والإسلامية — المرحلة الإبتدائية</span></div>
+      <p id="rc-school-info">Excellence in Arabic Language &amp; Islamic Sciences · Primary</p>
       <div class="term-badge" id="rc-term-badge">— Term — | Session —</div>
     </div>
 
@@ -421,22 +433,20 @@ import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
 import { getAuth, signInWithEmailAndPassword, signOut }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-
-
 const FB_CONFIG = {
-  apiKey:"AIzaSyAVD2x5XR55f_6GUBCNcfUcbT0LiTiw8VU",
-  authDomain:"aleeman-primary.firebaseapp.com",
-  projectId:"aleeman-primary",
-  storageBucket:"aleeman-primary.firebasestorage.app",
-  messagingSenderId:"120804301463",
-  appId:"1:120804301463:web:d1a84b22edd67bd36e67d2"
+  apiKey: "AIzaSyDRhXp8o3S4vCmFd633trU5fhgJs5oNMD8",
+  authDomain: "aleeman-primary-arabic.firebaseapp.com",
+  projectId: "aleeman-primary-arabic",
+  storageBucket: "aleeman-primary-arabic.firebasestorage.app",
+  messagingSenderId: "366485376736",
+  appId: "1:366485376736:web:290b1475d3233f7d120a85"
 };
-const app = getApps().length ? getApp() : initializeApp(FB_CONFIG);
-const db  = getFirestore(app);
+const app  = getApps().length ? getApp() : initializeApp(FB_CONFIG);
+const db   = getFirestore(app);
 const auth = getAuth(app);
 
-const DEFAULT_CLASSES_PP = ['Nursery 1','Nursery 2','Prep A','Prep B'];
-const DEFAULT_CLASSES_P  = ['Primary 1','Primary 2','Primary 3','Primary 4','Primary 5'];
+const DEFAULT_CLASSES = ['Ibtidaiyah 1','Ibtidaiyah 2','Ibtidaiyah 3',"I'dadiyah 1","I'dadiyah 2","I'dadiyah 3"];
+const ALLOWED_TERMS = ['First Term','Second Term'];
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -472,9 +482,16 @@ async function init() {
     let allClasses = [];
     if (classesSnap.exists()) {
       const d = classesSnap.data();
-      allClasses = [...(d.prePrimary||DEFAULT_CLASSES_PP), ...(d.primary||DEFAULT_CLASSES_P)];
+      const fromAny = [
+        ...(Array.isArray(d.prePrimary) ? d.prePrimary : []),
+        ...(Array.isArray(d.primary) ? d.primary : []),
+        ...(Array.isArray(d.ibtidaiyah) ? d.ibtidaiyah : []),
+        ...(Array.isArray(d.idadiyah) ? d.idadiyah : []),
+        ...(Array.isArray(d.list) ? d.list : []),
+      ];
+      allClasses = fromAny.length ? fromAny : DEFAULT_CLASSES;
     } else {
-      allClasses = [...DEFAULT_CLASSES_PP, ...DEFAULT_CLASSES_P];
+      allClasses = DEFAULT_CLASSES;
     }
 
     const sel = $('inp-class');
@@ -483,8 +500,7 @@ async function init() {
     if (sessSnap.exists()) {
       const d = sessSnap.data();
       if (d.activeSession) { $('inp-session').value=d.activeSession; $('session-pill').textContent=`${d.activeTerm||''} · ${d.activeSession}`; $('session-pill').style.display='inline'; }
-      if (d.activeTerm) $('inp-term').value = d.activeTerm;
-      // Store dates for display
+      if (d.activeTerm && ALLOWED_TERMS.includes(d.activeTerm)) $('inp-term').value = d.activeTerm;
       window._sessionDates = { termEnds: d.termEnds||'', nextTerm: d.nextTermBegins||'' };
     }
 
@@ -494,9 +510,7 @@ async function init() {
       if (info) $('rc-school-info').textContent = info;
     }
   } catch(err) {
-    // Non-fatal, use defaults
-    const allClasses = [...DEFAULT_CLASSES_PP, ...DEFAULT_CLASSES_P];
-    $('inp-class').innerHTML = '<option value="">Select class…</option>' + allClasses.map(c=>`<option>${esc(c)}</option>`).join('');
+    $('inp-class').innerHTML = '<option value="">Select class…</option>' + DEFAULT_CLASSES.map(c=>`<option>${esc(c)}</option>`).join('');
   } finally {
     $('page-loading').style.display='none';
     $('site-header').style.display='flex';
@@ -516,6 +530,7 @@ $('check-btn').addEventListener('click', async () => {
 
   if (!email||!password||!cls||!term||!session) { showErr('Please fill in all fields.'); return; }
   if (!/^\d{4}\/\d{4}$/.test(session)) { showErr('Session must be in format YYYY/YYYY (e.g. 2024/2025).'); return; }
+  if (!ALLOWED_TERMS.includes(term)) { showErr('Please select a valid term.'); return; }
 
   setLoading(true);
   try {
@@ -524,7 +539,6 @@ $('check-btn').addEventListener('click', async () => {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       uid = cred.user.uid;
-      // await signOut(auth);
     } catch(authErr) {
       const m = {
         'auth/invalid-credential': 'Incorrect email or password.',
@@ -545,11 +559,11 @@ $('check-btn').addEventListener('click', async () => {
     const student = studentSnap.data();
 
     // ── PAYMENT CHECK ──────────────────────────────────────────
-if (!student.hasPaid) {
-  showErr('⚠️ Your result is not available. Please contact the Principal to confirm your payment status.');
-  setLoading(false); return;
-}
-// ──────────────────────────────────────────────────────────
+    if (!student.hasPaid) {
+      showErr('⚠️ Your result is not available. Please contact the Principal to confirm your payment status.');
+      setLoading(false); return;
+    }
+    // ──────────────────────────────────────────────────────────
 
     if (student.class !== cls) {
       showErr(`You are registered under class ${student.class}. Please select the correct class.`);
@@ -581,10 +595,10 @@ if (!student.hasPaid) {
       position=rank;
     } catch(e){ /* stays 1 */ }
 
-await signOut(auth); 
+    await signOut(auth);
     setLoading(false);
     renderResult(result, student, position, classTotal);
-    
+
   } catch(err) {
     setLoading(false);
     showErr('Error fetching result. Check your connection and try again.');

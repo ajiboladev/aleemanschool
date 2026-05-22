@@ -1,85 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta charset="UTF-8">
-      <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover"
-    />
-  <title>Result Checker — Aleeman School</title>
-    <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
-<script src="../floating.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover" />
+  <title>Result Checker — Aleeman Arabic Secondary</title>
+  <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
+  <script src="../floating.js"></script>
+
+  <meta name="application-name" content="Aleeman Arabic Secondary" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Aleeman Arabic Secondary Result" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#1a4731" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../aleeman-logo.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary:      #1a5c2a;
-      --primary-dark: #0f3b1a;
-      --primary-mid:  #2d8c4e;
-      --accent:       #52b788;
-      --accent-light: #d8f3dc;
+      --primary:      #1e5c3a;
+      --primary-dark: #1a4731;
+      --primary-mid:  #2d7a52;
+      --accent:       #4a9e73;
+      --accent-light: #e8f5ef;
+      --gold:         #b8860b;
       --red:          #c62828;
       --red-light:    #ffebee;
       --amber:        #f57f17;
       --amber-light:  #fff8e1;
-      --text:         #1a2e1c;
+      --text:         #1a2e22;
       --text-muted:   #4a6551;
       --border:       #c8e6c9;
       --bg:           #f0fdf4;
       --white:        #ffffff;
-      --shadow:       0 4px 24px rgba(0,0,0,.1);
+      --shadow:       0 4px 24px rgba(26,71,49,.1);
     }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    * { -webkit-user-select:none; -ms-user-select:none; user-select:none; box-sizing:border-box; }
+    h1,h2,h3,h4 { font-family:'Outfit',sans-serif; }
+    .ar { font-family:'Noto Naskh Arabic', serif; direction:rtl; unicode-bidi:isolate; font-weight:600; }
+    
 
-    * {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  box-sizing: border-box;
-}
-
-    /* ── HEADER ── */
     .site-header {
-      background: linear-gradient(135deg, #0f3b1a, #1a5c2a);
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       color: #fff; padding: 1rem 1.5rem;
       display: flex; align-items: center; justify-content: space-between;
     }
     .site-header .logo { display: flex; align-items: center; gap: .75rem; }
     .site-header .logo-icon { font-size: 1.6rem; }
     .site-header .logo-text h1 { font-size: 1rem; font-weight: 700; }
-    .site-header .logo-text p  { font-size: .75rem; opacity: .75; }
-    .home-link { color: rgba(255,255,255,.8); text-decoration: none; font-size: .82rem; }
-    .home-link:hover { color: #fff; }
+    .site-header .logo-text p  { font-size: .75rem; opacity: .8; }
+    .home-link { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; padding:.35rem .8rem; border:1px solid rgba(255,255,255,.3); border-radius:8px; }
+    .home-link:hover { background:rgba(255,255,255,.12); color:#fff; }
 
-    /* ── SEARCH SECTION ── */
-    .search-section {
-      max-width: 560px; margin: 2.5rem auto 0; padding: 0 1rem;
-    }
-    .search-card {
-      background: var(--white); border-radius: 16px; padding: 2rem;
-      box-shadow: var(--shadow);
-    }
-    .search-card .title {
-      text-align: center; margin-bottom: 1.75rem;
-    }
-    .search-card .title h2 { font-size: 1.3rem; color: var(--primary); }
+    .search-section { max-width: 580px; margin: 2.5rem auto 0; padding: 0 1rem; }
+    .search-card { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow); border-top:4px solid var(--gold); }
+    .search-card .title { text-align: center; margin-bottom: 1.75rem; }
+    .search-card .title h2 { font-size: 1.25rem; color: var(--primary); }
     .search-card .title p  { font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
 
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 450px) { .form-grid { grid-template-columns: 1fr; } }
 
-    .form-group { margin-bottom: 0; }
-    .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--text-muted); margin-bottom: .3rem; }
+    .form-group label { display: block; font-size: .78rem; font-weight: 600; color: var(--text-muted); margin-bottom: .3rem; letter-spacing:.03em; text-transform:uppercase; }
     .form-group input, .form-group select {
       width: 100%; padding: .7rem .9rem;
       border: 1.5px solid var(--border); border-radius: 8px;
       font-size: .95rem; outline: none; transition: border .2s;
-      background: #fff;
+      background: #fff; font-family:inherit;
     }
-    .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
+    .form-group input:focus, .form-group select:focus { border-color: var(--primary); box-shadow:0 0 0 3px rgba(30,92,58,.08); }
+
+    .pw-wrap { position:relative; }
+    .pw-wrap input { padding-right:2.6rem !important; }
+    .pw-eye { position:absolute; right:.65rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--text-muted); font-size:1rem; padding:.15rem; line-height:1; }
+    .pw-eye:hover { color:var(--primary); }
 
     .search-btn {
       display: flex; align-items: center; justify-content: center; gap: .5rem;
@@ -87,140 +85,86 @@
       background: var(--primary); color: #fff;
       border: none; border-radius: 10px;
       font-size: 1rem; font-weight: 700; cursor: pointer;
-      transition: background .2s, transform .15s;
+      transition: background .2s, transform .15s; font-family:'Outfit',sans-serif;
     }
-    .search-btn:hover   { background: var(--primary-mid); transform: translateY(-1px); }
+    .search-btn:hover { background: var(--primary-mid); transform: translateY(-1px); }
     .search-btn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
 
     .error-box { background: var(--red-light); color: var(--red); border: 1px solid #ef9a9a; border-radius: 8px; padding: .75rem 1rem; font-size: .88rem; margin-top: 1rem; display: none; }
     .error-box.show { display: block; }
 
-    /* ── RESULT CARD ── */
-    #result-section {
-      max-width: 760px; margin: 2rem auto; padding: 0 1rem 3rem;
-      display: none;
-    }
-
-    .result-controls {
-      display: flex; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap;
-    }
-    .ctrl-btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      padding: .55rem 1.1rem; border-radius: 8px; border: none;
-      font-size: .85rem; font-weight: 600; cursor: pointer; transition: opacity .15s;
-    }
+    #result-section { max-width: 800px; margin: 2rem auto; padding: 0 1rem 3rem; display: none; }
+    .result-controls { display: flex; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .ctrl-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .55rem 1.1rem; border-radius: 8px; border: none; font-size: .85rem; font-weight: 600; cursor: pointer; transition: opacity .15s; font-family:'Outfit',sans-serif; }
     .ctrl-btn:hover { opacity: .85; }
-    .ctrl-btn.new    { background: var(--accent-light); color: var(--primary); }
-    .ctrl-btn.print  { background: var(--primary); color: #fff; }
+    .ctrl-btn.new   { background: var(--accent-light); color: var(--primary); }
+    .ctrl-btn.print { background: var(--primary); color: #fff; }
 
-    /* The report card (printable) */
-    .report-card {
-      background: var(--white);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+    .report-card { background: var(--white); border: 2px solid var(--primary); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
 
-    /* School header */
     .rc-header {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       color: #fff; text-align: center; padding: 1.5rem 1rem 1.25rem;
+      border-bottom: 3px solid var(--gold);
     }
-    .rc-header .emblem { font-size: 2.5rem; margin-bottom: .5rem; }
-    .rc-header h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: .03em; }
-    .rc-header p  { font-size: .78rem; opacity: .85; margin-top: .25rem; }
-    .rc-header .term-badge {
-      display: inline-block; background: rgba(255,255,255,.2);
-      border: 1px solid rgba(255,255,255,.4);
-      border-radius: 20px; padding: .25rem .85rem;
-      font-size: .78rem; font-weight: 600; margin-top: .75rem;
-    }
+    .rc-header .emblem { margin-bottom: .5rem; }
+    .rc-header h1 { font-size: 1.15rem; font-weight: 800; letter-spacing: .02em; }
+    .rc-header .ar-school { font-size:1rem; margin-top:.35rem; opacity:.92; }
+    .rc-header p { font-size: .76rem; opacity: .9; margin-top: .25rem; }
+    .rc-header .term-badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: .25rem .85rem; font-size: .78rem; font-weight: 600; margin-top: .75rem; }
 
-    /* Student info grid */
-    .rc-info {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0; border-bottom: 2px solid var(--border);
-    }
-    .rc-info-item {
-      padding: .75rem 1.25rem;
-      border-right: 1px solid var(--border);
-    }
+    .rc-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border-bottom: 2px solid var(--border); }
+    .rc-info-item { padding: .75rem 1.25rem; border-right: 1px solid var(--border); }
     .rc-info-item:last-child { border-right: none; }
     .rc-info-item .lbl { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
     .rc-info-item .val { font-size: .95rem; font-weight: 700; color: var(--text); margin-top: .15rem; }
 
-    /* Scores table */
+    .position-ribbon { text-align: center; padding: .65rem 1rem; background: linear-gradient(90deg, var(--primary-dark), var(--gold), var(--primary-dark)); color: #fff; font-size: .88rem; font-weight: 600; }
+
     .rc-table-wrap { overflow-x: auto; }
     .rc-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-    .rc-table thead th {
-      background: var(--accent-light); color: var(--primary-dark);
-      padding: .65rem 1rem; text-align: left;
-      font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
-    }
+    .rc-table thead th { background: var(--accent-light); color: var(--primary-dark); padding: .65rem 1rem; text-align: left; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
     .rc-table thead th:not(:first-child) { text-align: center; }
-    .rc-table td { padding: .6rem 1rem; border-bottom: 1px solid #edf5ee; }
+    .rc-table td { padding: .55rem 1rem; border-bottom: 1px solid #e0f0e4; vertical-align: middle; }
     .rc-table td:not(:first-child) { text-align: center; }
     .rc-table tr:last-child td { border-bottom: none; }
-    .rc-table tr:nth-child(even) td { background: #f9fdf9; }
+    .rc-table tr:nth-child(even) td { background: #f8fdf8; }
+    .subj-cell-name { font-weight: 500; }
 
-    .grade-pill {
-      display: inline-block; padding: .15rem .55rem; border-radius: 6px;
-      font-size: .78rem; font-weight: 700;
-    }
+    .grade-pill { display: inline-block; padding: .15rem .55rem; border-radius: 6px; font-size: .78rem; font-weight: 700; }
     .gA { background: #e8f5e9; color: #1a5c2a; }
     .gB { background: #e3f2fd; color: #1565c0; }
     .gC { background: #fff8e1; color: #e65100; }
     .gD { background: #fff3e0; color: #bf360c; }
     .gF { background: var(--red-light); color: var(--red); }
 
-    /* Summary bar */
-    .rc-summary {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      background: var(--accent-light); border-top: 2px solid var(--border);
-    }
+    .perf-bar-wrap { padding: 1rem 1.25rem; border-top: 1px solid var(--border); }
+    .perf-bar-wrap h4 { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: .6rem; }
+    .perf-bar-track { background: var(--border); border-radius: 10px; height: 12px; overflow: hidden; }
+    .perf-bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease; }
 
-    /* Remarks */
-    .rc-remarks { display:none; padding:1rem 1.25rem; border-top:1px solid var(--border); background:var(--white); }
-    .rc-remarks .remark-row { display:flex; gap:1rem; flex-wrap:wrap; }
-    .rc-remarks .remark-col { flex:1; min-width:220px; }
-    .rc-remarks .remark-card { padding:.65rem; border-radius:8px; background:#fbfff9; border:1px solid #eef6ec; box-shadow:0 6px 18px rgba(13,59,26,.03); }
-    .rc-remarks .remark-label { font-size:.78rem; font-weight:800; color:var(--primary); margin-bottom:.25rem; }
-    .rc-remarks .remark-text { font-size:.92rem; color:var(--text); padding:.25rem 0; min-height:48px; white-space:pre-wrap; }
+    .rc-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); background: var(--accent-light); border-top: 2px solid var(--border); }
     .rc-summary-item { padding: .9rem 1.25rem; text-align: center; border-right: 1px solid var(--border); }
     .rc-summary-item:last-child { border-right: none; }
     .rc-summary-item .s-lbl { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
     .rc-summary-item .s-val { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-top: .1rem; }
 
-    /* Grade key */
-    .grade-key {
-      padding: 1rem 1.25rem; border-top: 1px solid var(--border);
-      background: #fafffe;
-    }
+    .rc-remarks { display: none; padding: 1rem 1.25rem; border-top: 1px solid var(--border); background: var(--white); }
+    .rc-remarks .remark-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .rc-remarks .remark-col { flex: 1; min-width: 220px; }
+    .rc-remarks .remark-card { padding: .65rem; border-radius: 8px; background: #fbfff9; border: 1px solid #eaf2e7; }
+    .rc-remarks .remark-label { font-size: .78rem; font-weight: 800; color: var(--primary); margin-bottom: .25rem; }
+    .rc-remarks .remark-text { font-size: .92rem; color: var(--text); padding: .25rem 0; min-height: 48px; white-space: pre-wrap; }
+
+    .grade-key { padding: 1rem 1.25rem; border-top: 1px solid var(--border); background: #fafffe; }
     .grade-key h4 { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: .6rem; }
     .grade-key-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
     .gk-item { font-size: .72rem; background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: .2rem .55rem; }
 
-    /* Footer */
-    .rc-footer {
-      border-top: 2px solid var(--border); padding: 1rem 1.25rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; background: #fafffe;
-    }
-    .sig-line { border-top: 1.5px solid var(--text-muted); padding-top: .4rem; margin-top: 2rem; font-size: .75rem; color: var(--text-muted); font-weight: 600; }
-
-    /* Position ribbon */
-    .position-ribbon {
-      text-align: center; padding: .65rem 1rem;
-      background: linear-gradient(90deg, var(--primary-dark), var(--primary-mid), var(--primary-dark));
-      color: #fff; font-size: .88rem; font-weight: 600;
-    }
-
-    /* Performance bar */
-    .perf-bar-wrap { padding: 1rem 1.25rem; border-top: 1px solid var(--border); }
-    .perf-bar-wrap h4 { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: .6rem; }
-    .perf-bar-track { background: var(--border); border-radius: 10px; height: 12px; overflow: hidden; }
-    .perf-bar-fill  { height: 100%; border-radius: 10px; transition: width 1s ease; }
+    .loading-overlay { display: none; position: fixed; inset: 0; background: rgba(255,255,255,.75); backdrop-filter: blur(4px); align-items: center; justify-content: center; z-index: 500; flex-direction: column; gap: 1rem; }
+    .loading-overlay.show { display: flex; }
+    .loader { width: 48px; height: 48px; border: 5px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Print / Export Modal */
     .export-ov { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 1200; }
@@ -229,107 +173,86 @@
     .export-modal { position: relative; background: var(--white); border-radius: 12px; padding: 1.25rem; width: 360px; max-width: 92%; box-shadow: 0 18px 48px rgba(10,20,10,.25); z-index: 2; }
     .export-modal h3 { margin: 0 0 .5rem 0; font-size: 1rem; color: var(--primary); }
     .export-actions { display:flex; gap:.5rem; margin-top:.75rem; justify-content:flex-end; }
-    .export-actions .btn { padding:.55rem .85rem; border-radius:8px; font-weight:700; }
+    .export-actions .btn { padding:.55rem .85rem; border-radius:8px; font-weight:700; border:none; cursor:pointer; font-family:'Outfit',sans-serif; }
+    .export-actions .btn-primary { background:var(--primary); color:#fff; }
     .export-note { font-size:.86rem; color:var(--text-muted); margin-top:.5rem; }
 
-    /* Loading */
-    .loading-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(255,255,255,.75); backdrop-filter: blur(4px);
-      align-items: center; justify-content: center; z-index: 500; flex-direction: column; gap: 1rem;
-    }
-    .loading-overlay.show { display: flex; }
-    .loader { width: 48px; height: 48px; border: 5px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin .7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Print styles */
     @media print {
       body { background: #fff !important; }
-      .site-header, .search-section, .result-controls, .grade-key, #toast { display: none !important; }
-      #result-section { margin: 0; padding: 0; display: block !important; }
+      .site-header, .search-section, .result-controls, #toast { display: none !important; }
+      #result-section { margin: 0; padding: 0; display: block !important; max-width:none; }
       .report-card { border: 1px solid #000; box-shadow: none; border-radius: 0; }
-      .rc-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .rc-summary { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .rc-remarks { display:block !important; }
+      .rc-header, .rc-summary, .position-ribbon { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .rc-remarks { display: block !important; }
     }
 
-    #toast {
-      position: fixed; bottom: 1.5rem; right: 1.5rem;
-      background: var(--text); color: #fff; padding: .75rem 1.2rem;
-      border-radius: 8px; font-size: .88rem; z-index: 9999;
-      transform: translateY(20px); opacity: 0; transition: all .25s; pointer-events: none;
-    }
+    #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--text); color: #fff; padding: .75rem 1.2rem; border-radius: 8px; font-size: .88rem; z-index: 9999; transform: translateY(20px); opacity: 0; transition: all .25s; pointer-events: none; }
     #toast.show { transform: translateY(0); opacity: 1; }
     #toast.error { background: var(--red); }
   </style>
 </head>
 <body>
 
-<!-- Header -->
 <header class="site-header">
   <div class="logo">
-    <span class="logo-icon">📚</span>
+    <span class="logo-icon">🕌</span>
     <div class="logo-text">
-      <h1>Aleeman School Portal</h1>
-      <p>Result Checker</p>
+      <h1>Aleeman Arabic Secondary</h1>
+      <p>Result Checker · <span class="ar">المدرسة الثانوية</span></p>
     </div>
   </div>
   <a href="./index.html" class="home-link">← Home</a>
 </header>
 
-<!-- Loading -->
 <div class="loading-overlay" id="loading-overlay">
   <div class="loader"></div>
   <p style="color:var(--primary);font-weight:600">Fetching your result…</p>
 </div>
 
-<!-- Search Card -->
 <div class="search-section">
   <div class="search-card">
     <div class="title">
       <h2><i class="fa-solid fa-chart-bar"></i> Check Your Result</h2>
-      <p>Enter your details to view your exam result</p>
+      <p>Arabic &amp; Islamic Studies Section · <span class="ar">قسم الدراسات العربية والإسلامية</span></p>
     </div>
 
     <div class="form-grid">
       <div class="form-group">
-  <label>Email Address</label>
-  <input type="email" id="inp-number" placeholder="student@aleeman.edu.ng" autocomplete="email" />
-</div>
-<div class="form-group">
-  <label>Password</label>
-  <input type="password" id="inp-password" placeholder="••••••" />
-</div>
+        <label>Email Address</label>
+        <input type="email" id="inp-number" placeholder="student@aleeman.edu.ng" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="pw-wrap"><input type="password" id="inp-password" placeholder="••••••" autocomplete="current-password" /><button class="pw-eye" type="button" id="pw-eye">👁️</button></div>
+      </div>
       <div class="form-group">
         <label>Class</label>
         <select id="inp-class">
           <option value="">Select class</option>
-          <option>JSS1</option><option>JSS2</option><option>JSS3</option>
-          <option>SS1</option><option>SS2</option><option>SS3</option>
+          <option>Ibtidaiyah 1</option><option>Ibtidaiyah 2</option><option>Ibtidaiyah 3</option>
+          <option>I'dadiyah 1</option><option>I'dadiyah 2</option><option>I'dadiyah 3</option>
+          <option>Thanawiyah 1</option><option>Thanawiyah 2</option><option>Thanawiyah 3</option>
         </select>
       </div>
       <div class="form-group">
         <label>Term</label>
         <select id="inp-term">
           <option value="">Select term</option>
-          <option>First Term</option><option>Second Term</option><option>Third Term</option>
+          <option>First Term</option><option>Second Term</option>
         </select>
       </div>
     </div>
 
     <div class="form-group" style="margin-top:1rem">
       <label>Academic Session</label>
-      <input type="text" id="inp-session" placeholder="e.g. 2023/2024" />
+      <input type="text" id="inp-session" placeholder="e.g. 2024/2025" />
     </div>
 
-    <button class="search-btn" id="search-btn">
-      <i class="fa-solid fa-magnifying-glass"></i> Check My Result
-    </button>
+    <button class="search-btn" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i> Check My Result</button>
     <div class="error-box" id="error-box"></div>
   </div>
 </div>
 
-<!-- Result Section -->
 <div id="result-section">
   <div class="result-controls">
     <button class="ctrl-btn new" id="new-search-btn">← New Search</button>
@@ -337,110 +260,53 @@
   </div>
 
   <div class="report-card" id="report-card">
-
-    <!-- School Header -->
     <div class="rc-header">
-      <!-- <div class="emblem">🏫</div> -->
-       <div class="emblem"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius: 4px;"></div>
-      <h1>ALEEMAN SCHOOL OF SCIENCE AND ARABIC STUDIES</h1>
-      <p>Excellence in Education · Science · Arabic · Islamic Values</p>
+      <div class="emblem"><img src="../aleeman-logo.png" alt="Aleeman Logo" width="70" style="border-radius:4px;"></div>
+      <h1>ALEEMAN SCHOOL — ARABIC &amp; ISLAMIC STUDIES SECTION</h1>
+      <div class="ar-school"><span class="ar">مدرسة العليمان للدراسات العربية والإسلامية — المرحلة الثانوية</span></div>
+      <p>Excellence in Arabic Language &amp; Islamic Sciences</p>
       <div class="term-badge" id="rc-term-badge">— Term — | Session —</div>
     </div>
 
-    <!-- Student Info -->
     <div class="rc-info">
-      <div class="rc-info-item">
-        <div class="lbl">Student Name</div>
-        <div class="val" id="rc-name">—</div>
-      </div>
-      <div class="rc-info-item">
-        <div class="lbl">Student Number</div>
-        <div class="val" id="rc-number">—</div>
-      </div>
-      <div class="rc-info-item">
-        <div class="lbl">Class</div>
-        <div class="val" id="rc-class">—</div>
-      </div>
-      <div class="rc-info-item">
-        <div class="lbl">Gender</div>
-        <div class="val" id="rc-gender">—</div>
-      </div>
+      <div class="rc-info-item"><div class="lbl">Student Name</div><div class="val" id="rc-name">—</div></div>
+      <div class="rc-info-item"><div class="lbl">Student Number</div><div class="val" id="rc-number">—</div></div>
+      <div class="rc-info-item"><div class="lbl">Class</div><div class="val" id="rc-class">—</div></div>
+      <div class="rc-info-item"><div class="lbl">Gender</div><div class="val" id="rc-gender">—</div></div>
     </div>
 
-    <!-- Position Ribbon -->
     <div class="position-ribbon" id="rc-position-ribbon">Position: Computing…</div>
 
-    <!-- Scores Table -->
     <div class="rc-table-wrap">
       <table class="rc-table">
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>CA (30)</th>
-            <th>Exam (70)</th>
-            <th>Total (100)</th>
-            <th>Grade</th>
-            <th>Remark</th>
-          </tr>
-        </thead>
+        <thead id="rc-thead"></thead>
         <tbody id="rc-subjects-tbody"></tbody>
       </table>
     </div>
 
-    <!-- Performance bar -->
     <div class="perf-bar-wrap">
       <h4>Overall Performance</h4>
-      <div class="perf-bar-track">
-        <div class="perf-bar-fill" id="perf-bar" style="width:0;background:var(--primary)"></div>
-      </div>
+      <div class="perf-bar-track"><div class="perf-bar-fill" id="perf-bar" style="width:0;background:var(--primary)"></div></div>
       <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted);margin-top:.3rem">
         <span>0%</span><span id="perf-pct">—</span><span>100%</span>
       </div>
     </div>
 
-    <!-- Summary -->
     <div class="rc-summary">
-      <div class="rc-summary-item">
-        <div class="s-lbl">Total Score</div>
-        <div class="s-val" id="rc-total">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">Average</div>
-        <div class="s-val" id="rc-average">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">Position</div>
-        <div class="s-val" id="rc-position">—</div>
-      </div>
-      <div class="rc-summary-item">
-        <div class="s-lbl">In Class of</div>
-        <div class="s-val" id="rc-outof">—</div>
-      </div>
-      <div class="rc-summary-item" style="display: none;">
-        <div class="s-lbl">Submitted By</div>
-        <div class="s-val" id="rc-teacher" style="font-size:.9rem">—</div>
-      </div>
+      <div class="rc-summary-item"><div class="s-lbl">Total Score</div><div class="s-val" id="rc-total">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">Average</div><div class="s-val" id="rc-average">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">Position</div><div class="s-val" id="rc-position">—</div></div>
+      <div class="rc-summary-item"><div class="s-lbl">In Class of</div><div class="s-val" id="rc-outof">—</div></div>
+      <div class="rc-summary-item" style="display: none;"><div class="s-lbl">Submitted By</div><div class="s-val" id="rc-teacher" style="font-size:.9rem">—</div></div>
     </div>
 
-    <!-- Remarks -->
     <div class="rc-remarks" id="rc-remarks">
       <div class="remark-row">
-        <div class="remark-col">
-          <div class="remark-card">
-            <div class="remark-label">Teacher's Remark</div>
-            <div class="remark-text" id="rc-teacher-remark">—</div>
-          </div>
-        </div>
-        <div class="remark-col">
-          <div class="remark-card">
-            <div class="remark-label">Principal's Remark</div>
-            <div class="remark-text" id="rc-principal-remark">—</div>
-          </div>
-        </div>
+        <div class="remark-col"><div class="remark-card"><div class="remark-label">Teacher's Remark</div><div class="remark-text" id="rc-teacher-remark">—</div></div></div>
+        <div class="remark-col"><div class="remark-card"><div class="remark-label">Principal's Remark</div><div class="remark-text" id="rc-principal-remark">—</div></div></div>
       </div>
     </div>
 
-    <!-- Grade Key -->
     <div class="grade-key">
       <h4>Grading Scale</h4>
       <div class="grade-key-grid">
@@ -455,19 +321,6 @@
         <div class="gk-item"><strong>F9</strong> 0–39 Fail</div>
       </div>
     </div>
-
-    <!-- Signature Footer -->
-    <!-- <div class="rc-footer">
-      <div>
-        <div style="margin-bottom:3rem"></div>
-        <div class="sig-line">Class Teacher's Signature</div>
-      </div>
-      <div>
-        <div style="margin-bottom:3rem"></div>
-        <div class="sig-line">Principal's Signature &amp; Stamp</div>
-      </div>
-    </div> -->
-
   </div>
 </div>
 
@@ -487,7 +340,6 @@
   </div>
 </div>
 
-<!-- Script -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
@@ -495,19 +347,21 @@ import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy }
 import { getAuth, signInWithEmailAndPassword, signOut }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-
-
 const firebaseConfig = {
-  apiKey: "AIzaSyD8fS0g_IU9RKBdyhx-WmFZZbttEbCC464",
-  authDomain: "aleeman-school.firebaseapp.com",
-  projectId: "aleeman-school",
-  storageBucket: "aleeman-school.firebasestorage.app",
-  messagingSenderId: "1095322007489",
-  appId: "1:1095322007489:web:0e43cb98bd514f0ea7e140"
+  apiKey: "AIzaSyA5EdEE8qIiUSrGWjmKC4Yk5b_GNU0MQWI",
+  authDomain: "aleeman-arabic.firebaseapp.com",
+  projectId: "aleeman-arabic",
+  storageBucket: "aleeman-arabic.firebasestorage.app",
+  messagingSenderId: "169646317935",
+  appId: "1:169646317935:web:568fc656d1f492d5b8089a"
 };
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 const auth = getAuth(app);
+
+const ALLOWED_TERMS = ['First Term','Second Term'];
+
+const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 function showError(msg) {
   const el = document.getElementById('error-box');
@@ -540,6 +394,13 @@ function ordinal(n) {
   return n + (s[(v-20)%10] || s[v] || s[0]);
 }
 
+document.getElementById('pw-eye').addEventListener('click', () => {
+  const inp = document.getElementById('inp-password');
+  const show = inp.type === 'password';
+  inp.type = show ? 'text' : 'password';
+  document.getElementById('pw-eye').textContent = show ? '🙈' : '👁️';
+});
+
 /* ── Search ── */
 document.getElementById('search-btn').addEventListener('click', async () => {
   clearError();
@@ -555,6 +416,9 @@ document.getElementById('search-btn').addEventListener('click', async () => {
   if (!/^\d{4}\/\d{4}$/.test(session)) {
     showError('Session must be in format YYYY/YYYY (e.g. 2024/2025).'); return;
   }
+  if (!ALLOWED_TERMS.includes(term)) {
+    showError('Please select a valid term.'); return;
+  }
 
   setLoading(true);
   try {
@@ -563,7 +427,6 @@ document.getElementById('search-btn').addEventListener('click', async () => {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       uid = cred.user.uid;
-      // await signOut(auth); // Sign out immediately after getting UID
     } catch(authErr) {
       const m = {
         'auth/invalid-credential': 'Incorrect email or password.',
@@ -584,11 +447,11 @@ document.getElementById('search-btn').addEventListener('click', async () => {
     const student = studentSnap.data();
 
     // ── PAYMENT CHECK ──────────────────────────────────────────
-if (!student.hasPaid) {
-  showError('⚠️ Your result is not available. Please contact the Principal to confirm your payment status.');
-  setLoading(false); return;
-}
-// ──────────────────────────────────────────────────────────
+    if (!student.hasPaid) {
+      showError('⚠️ Your result is not available. Please contact the Principal to confirm your payment status.');
+      setLoading(false); return;
+    }
+    // ──────────────────────────────────────────────────────────
 
     // Verify the class matches what the student selected
     if (student.class !== cls) {
@@ -625,7 +488,7 @@ if (!student.hasPaid) {
     await signOut(auth);
     setLoading(false);
     renderResult(result, student, position, classTotal);
-    
+
   } catch(e) {
     setLoading(false);
     showError('Error fetching result. Check your connection and try again.');
@@ -635,35 +498,53 @@ if (!student.hasPaid) {
 
 /* ── Render Result ── */
 function renderResult(result, student, position, classTotal) {
-  /* Hide search, show result */
   document.getElementById('result-section').style.display = 'block';
   document.querySelector('.search-section').style.display = 'none';
   document.querySelector('.site-header').scrollIntoView({ behavior:'smooth' });
 
-  /* Header */
-  document.getElementById('rc-term-badge').textContent = `${result.term}  |  ${result.session}`;
+  document.getElementById('rc-term-badge').textContent = `${result.term} | ${result.session}`;
   document.getElementById('rc-name').textContent    = result.studentName || '—';
   document.getElementById('rc-number').textContent  = result.studentNumber || '—';
   document.getElementById('rc-class').textContent   = result.class || '—';
   document.getElementById('rc-gender').textContent  = student.gender || result.gender || '—';
 
-  /* Position ribbon */
   document.getElementById('rc-position-ribbon').textContent =
     `Class Position: ${ordinal(position)} out of ${classTotal} students`;
 
-  /* Subjects */
-  const tbody = document.getElementById('rc-subjects-tbody');
-  tbody.innerHTML = (result.subjects || []).map(s => `
-    <tr>
-      <td style="font-weight:500;white-space:nowrap">${s.name}</td>
+  /* Build dynamic table head based on assessment config from result */
+  const tests = (result.assessmentConfig && Array.isArray(result.assessmentConfig.tests)) ? result.assessmentConfig.tests : [];
+  const caMax = tests.reduce((s,t) => s + Number(t.max||0), 0) || 30;
+  const testHeaderHTML = tests.length
+    ? tests.map(t => `<th>${esc(t.name)}<br><span style="font-weight:400;opacity:.7">(${t.max})</span></th>`).join('')
+    : '';
+  document.getElementById('rc-thead').innerHTML = `<tr>
+    <th>Subject</th>
+    ${testHeaderHTML}
+    <th>CA (${caMax})</th>
+    <th>Exam (70)</th>
+    <th>Total (100)</th>
+    <th>Grade</th>
+    <th>Remark</th>
+  </tr>`;
+
+  document.getElementById('rc-subjects-tbody').innerHTML = (result.subjects || []).map(s => {
+    const testCells = tests.length
+      ? tests.map(t => {
+          const found = (s.tests || []).find(x => x.id === t.id);
+          return `<td>${found ? found.score : '—'}</td>`;
+        }).join('')
+      : '';
+    return `<tr>
+      <td class="subj-cell-name">${esc(s.name)}</td>
+      ${testCells}
       <td>${s.caTotal ?? '—'}</td>
       <td>${s.exam ?? '—'}</td>
-      <td><strong>${s.total}</strong></td>
-      <td><span class="grade-pill ${gradeClass(s.grade)}">${s.grade}</span></td>
-      <td>${s.remark||'—'}</td>
-    </tr>`).join('');
+      <td><strong>${s.total ?? '—'}</strong></td>
+      <td><span class="grade-pill ${gradeClass(s.grade)}">${esc(s.grade || '—')}</span></td>
+      <td>${esc(s.remark || '—')}</td>
+    </tr>`;
+  }).join('');
 
-  /* Summary */
   const avg = result.average != null ? result.average.toFixed(1) : '—';
   document.getElementById('rc-total').textContent   = result.totalScore != null ? result.totalScore : '—';
   document.getElementById('rc-average').textContent = avg + (avg !== '—' ? '%' : '');
@@ -671,22 +552,19 @@ function renderResult(result, student, position, classTotal) {
   document.getElementById('rc-outof').textContent   = classTotal;
   document.getElementById('rc-teacher').textContent = result.submittedBy || '—';
 
-  /* Performance bar */
   const pct = result.average != null ? Math.min(result.average, 100) : 0;
   setTimeout(() => {
     document.getElementById('perf-bar').style.width = pct + '%';
     document.getElementById('perf-bar').style.background =
-      pct >= 70 ? 'var(--primary)' : pct >= 50 ? '#f57f17' : '#c62828';
+      pct >= 70 ? 'var(--primary)' : pct >= 50 ? 'var(--amber)' : 'var(--red)';
   }, 100);
   document.getElementById('perf-pct').textContent = avg + (avg !== '—' ? '%' : '');
 
-  /* Remarks (teacher & principal) */
   const tRemark = result.teacherRemark || '';
   const pRemark = result.principalRemark || '';
-  const remarksEl = document.getElementById('rc-remarks');
-  if (document.getElementById('rc-teacher-remark')) document.getElementById('rc-teacher-remark').textContent = tRemark || '—';
-  if (document.getElementById('rc-principal-remark')) document.getElementById('rc-principal-remark').textContent = pRemark || '—';
-  if (remarksEl) remarksEl.style.display = (tRemark || pRemark) ? 'block' : 'none';
+  document.getElementById('rc-teacher-remark').textContent   = tRemark || '—';
+  document.getElementById('rc-principal-remark').textContent = pRemark || '—';
+  document.getElementById('rc-remarks').style.display = (tRemark || pRemark) ? 'block' : 'none';
 }
 
 /* ── Export modal logic ── */
@@ -706,7 +584,6 @@ exportBackdrop.addEventListener('click', closeExportModal);
 
 exportPrint.addEventListener('click', () => {
   closeExportModal();
-  // Allow modal to close animation before triggering print
   setTimeout(()=>window.print(), 150);
 });
 
@@ -726,7 +603,6 @@ exportPdf.addEventListener('click', async () => {
   try {
     const el = document.getElementById('report-card');
     if (!el) { showError('Nothing to export'); return; }
-    // show loading overlay
     setLoading(true);
     await ensureHtml2PdfLoaded();
     const opt = {
@@ -736,7 +612,6 @@ exportPdf.addEventListener('click', async () => {
       html2canvas:  { scale: 2, useCORS: true },
       jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
-    // generate and save
     window.html2pdf().set(opt).from(el).save().then(()=>setLoading(false)).catch(err=>{setLoading(false); showError('Failed to generate PDF.'); console.error(err);});
   } catch(err) { setLoading(false); showError('Failed to export PDF.'); console.error(err); }
 });
@@ -758,7 +633,6 @@ document.getElementById('new-search-btn').addEventListener('click', () => {
     if (e.key==='Enter') document.getElementById('search-btn').click();
   });
 });
-
 </script>
 </body>
 </html>
