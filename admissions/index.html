@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/improvements.css">
+    <link rel="stylesheet" href="../css/fees-modal.css">
          <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -146,9 +147,12 @@
                     <div class="fee-note">
                         <p><i class="fas fa-info-circle"></i> Fees include: Tuition, textbooks, and basic materials. Boarding fees separate.</p>
                     </div>
+                    <button type="button" class="fm-trigger-btn" onclick="openFeesModal()">
+                        <i class="fas fa-receipt"></i> View Full Fee Structure
+                    </button>
                 </div>
                 
-                <div class="deadlines-info">
+                <!-- <div class="deadlines-info">
                     <h2>Application Deadlines</h2>
                     <div class="deadline-item">
                         <h4>2024/2025 Academic Session</h4>
@@ -165,7 +169,7 @@
                         <p class="deadline-date"><i class="far fa-calendar-alt"></i> August 10-15, 2024</p>
                         <p>Admission Test Dates</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -493,5 +497,543 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/admissions.js"></script>
+    <script src="../js/fees-data.js"></script>
+    <script src="../js/fees-modal.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Admissions - Aleeman School</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/improvements.css">
+         <link rel="icon" href="../aleeman-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+      <script>window.FLOATING_TEXT = 'Proudly 2024/2025 Set';</script>
+<script src="../floating.js"></script>
+</head>
+<body>
+    Navigation
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../aleeman-logo.png" alt="Aleeman School Logo">
+                <span>Aleeman School</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about/">About Us</a></li>
+                <li><a href="../academics/">Academics</a></li>
+                <li><a href="../admissions/" class="active">Admissions</a></li>
+                <li><a href="../contact/">Contact</a></li>
+                 <li><a href="../anthem/">School Anthem</a></li>
+                 <li><a href="../portal/">Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    Page Header
+    <section class="page-header">
+        <div class="container">
+            <h1>Admissions</h1>
+            <p>Join Aleeman School of Science & Arabic Study</p>
+        </div>
+    </section>
+
+    Admission Process
+    <section class="admission-process">
+        <div class="container">
+            <h2 class="section-title">Admission Process</h2>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Inquiry & Visit</h3>
+                    <p>Visit our school or contact admissions office</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Application</h3>
+                    <p>Submit completed application form</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Entrance Exam</h3>
+                    <p>Take admission test (Mathematics & English)</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Interview</h3>
+                    <p>Student & parent interview session</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Acceptance</h3>
+                    <p>Receive admission letter & complete registration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    Requirements Section
+    <section class="requirements-section" id="requirements">
+        <div class="container">
+            <h2 class="section-title">Admission Requirements</h2>
+            
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <h3><i class="fas fa-user-graduate"></i> Junior Secondary (JSS1)</h3>
+                    <ul>
+                        <li>Primary School Leaving Certificate</li>
+                        <li>Birth Certificate/Age Declaration</li>
+                        <li>4 Recent Passport Photographs</li>
+                        <li>Medical Certificate</li>
+                        <li>Testimonial from previous school</li>
+                    </ul>
+                </div>
+                
+                <div class="req-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Senior Secondary (SS1)</h3>
+                    <ul>
+                        <li>JSS3/BECE Certificate</li>
+                        <li>Birth Certificate</li>
+                        <li>4 Recent Passport Photographs</li>
+                        <li>Medical Certificate</li>
+                        <li>Junior School Testimonial</li>
+                        <li>Transfer Certificate (if applicable)</li>
+                    </ul>
+                </div>
+                
+                <div class="req-card">
+                    <h3><i class="fas fa-exchange-alt"></i> Transfer Students</h3>
+                    <ul>
+                        <li>All basic requirements</li>
+                        <li>Official Transfer Certificate</li>
+                        <li>Last academic report</li>
+                        <li>Character reference</li>
+                        <li>Interview with Head of Department</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    Fees & Deadlines
+    <section class="fees-section">
+        <div class="container">
+            <div class="fees-deadlines">
+                <div class="fees-info">
+                    <h2>Tuition & Fees</h2>
+                    <div class="fee-item">
+                        <h4>Junior Secondary (JSS 1-3)</h4>
+                        <p class="fee-amount">₦150,000 - ₦180,000 per term</p>
+                    </div>
+                    <div class="fee-item">
+                        <h4>Senior Secondary (SS 1-3)</h4>
+                        <p class="fee-amount">₦180,000 - ₦220,000 per term</p>
+                    </div>
+                    <div class="fee-note">
+                        <p><i class="fas fa-info-circle"></i> Fees include: Tuition, textbooks, and basic materials. Boarding fees separate.</p>
+                    </div>
+                </div>
+                
+                <div class="deadlines-info">
+                    <h2>Application Deadlines</h2>
+                    <div class="deadline-item">
+                        <h4>2024/2025 Academic Session</h4>
+                        <p class="deadline-date"><i class="far fa-calendar-alt"></i> June 30, 2024</p>
+                        <p>Early Application Deadline</p>
+                    </div>
+                    <div class="deadline-item">
+                        <h4>Regular Admission</h4>
+                        <p class="deadline-date"><i class="far fa-calendar-alt"></i> July 31, 2024</p>
+                        <p>Final Application Deadline</p>
+                    </div>
+                    <div class="deadline-item">
+                        <h4>Entrance Exams</h4>
+                        <p class="deadline-date"><i class="far fa-calendar-alt"></i> August 10-15, 2024</p>
+                        <p>Admission Test Dates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    Application Form
+<section class="application-form-section">
+    <div class="container">
+        <h2 class="section-title">Online Admission Form</h2>
+
+        <div class="form-container">
+            <form id="admissionForm">
+
+                <div class="form-group">
+                    <label for="studentName">Student's Full Name *</label>
+                    <input type="text" id="studentName" name="studentName" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="class">Applying For *</label>
+                        <select id="class" name="class" required>
+                            <option value="">Select Class</option>
+                            <option value="jss1">JSS 1</option>
+                            <option value="jss2">JSS 2</option>
+                            <option value="jss3">JSS 3</option>
+                            <option value="ss1">SS 1</option>
+                            <option value="ss2">SS 2</option>
+                            <option value="ss3">SS 3</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="session">Academic Session *</label>
+                        <input type="text" id="session" name="session" value="2025/2026" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="childrenCount">Number of Children Applying *</label>
+                    <select id="childrenCount" name="childrenCount" required>
+                        <option value="1">1 Child</option>
+                        <option value="2">2 Children</option>
+                        <option value="3">3 Children</option>
+                        <option value="4">4 Children</option>
+                        <option value="5">5+ Children</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="previousSchool">Previous School Attended</label>
+                    <input type="text" id="previousSchool" name="previousSchool">
+                </div>
+
+                <div class="form-group">
+                    <label for="parentName">Parent/Guardian Name *</label>
+                    <input type="text" id="parentName" name="parentName" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Home Address *</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Application
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="form-note">
+                 <p>
+                    <i class="fas fa-info-circle"></i>
+                    Please submit a separate admission form for each child applying to Aleeman School.
+                </p>
+
+                <p>
+                    <i class="fas fa-info-circle"></i>
+                    After submitting this form, our admissions office will contact you regarding the entrance examination and interview schedule.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    Scholarship Section
+     <section class="scholarship-section">
+        <div class="container">
+            <h2 class="section-title">Scholarships & Financial Aid</h2>
+            
+            <div class="scholarship-cards">
+                <div class="scholarship-card">
+                    <h3><i class="fas fa-star"></i> Academic Excellence</h3>
+                    <p>For students with exceptional academic records</p>
+                    <p class="scholarship-amount">Up to 50% tuition waiver</p>
+                </div>
+                
+                <div class="scholarship-card">
+                    <h3><i class="fas fa-hands-helping"></i> Need-Based Aid</h3>
+                    <p>For economically disadvantaged students</p>
+                    <p class="scholarship-amount">20-75% financial assistance</p>
+                </div>
+                
+                <div class="scholarship-card">
+                    <h3><i class="fas fa-quran"></i> Qur'an Memorization</h3>
+                    <p>For Hafiz/Hafizah students</p>
+                    <p class="scholarship-amount">Up to 30% tuition discount</p>
+                </div>
+            </div>
+            
+            <div class="scholarship-note">
+                <p><i class="fas fa-exclamation-circle"></i> Scholarship applications must be submitted with admission application.</p>
+            </div>
+        </div>
+    </section> 
+
+    Application Form
+     <section class="application-form-section">
+        <div class="container">
+            <h2 class="section-title">Online Application</h2>
+            
+            <div class="form-container">
+                <form id="admissionForm">
+                    <div class="form-group">
+                        <label for="studentName">Student's Full Name *</label>
+                        <input type="text" id="studentName" name="studentName" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="grade">Applying for Grade *</label>
+                            <select id="grade" name="grade" required>
+                                <option value="">Select Grade</option>
+                                <option value="jss1">JSS 1</option>
+                                <option value="jss2">JSS 2</option>
+                                <option value="jss3">JSS 3</option>
+                                <option value="ss1">SS 1</option>
+                                <option value="ss2">SS 2</option>
+                                <option value="ss3">SS 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parentName">Parent/Guardian Name *</label>
+                        <input type="text" id="parentName" name="parentName" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="previousSchool">Previous School Attended</label>
+                        <input type="text" id="previousSchool" name="previousSchool">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="scholarship" name="scholarship">
+                        <label for="scholarship">I wish to apply for scholarship</label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                        <button type="button" class="download-btn" onclick="window.open('assets/application-form.pdf')">
+                            <i class="fas fa-download"></i> Download Form (PDF)
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="form-note">
+                    <p><i class="fas fa-info-circle"></i> After submission, our admissions office will contact you within 48 hours to schedule an entrance exam.</p>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    Contact Admissions
+     <section class="contact-admissions">
+        <div class="container">
+            <h2 class="section-title">Contact Admissions Office</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Phone</h4>
+                    <p>+234 801 234 5678</p>
+                    <p>Mon-Fri, 8:00 AM - 4:00 PM</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p>admissions@aleemanschool.edu.ng</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Visit Us</h4>
+                    <p>Aleeman School Campus</p>
+                    <p>Along [Road Name], [City], Nigeria</p>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+   
+    Footer
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="../aleeman-logo.png" alt="Aleeman School">
+                        <h3>Aleeman School</h3>
+                    </div>
+                    <p>School of Science and Arabic Study</p>
+                    <p class="footer-tagline">"Second To None"</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="./about/">About Us</a></li>
+                        <li><a href="./academics/">Academic Programs</a></li>
+                        <li><a href="./admissions/">Admissions</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="./contact/">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Ibadan, Oyo State</li>
+                        <li><i class="fas fa-phone"></i> +234 815 300 5393</li>
+                        <li><i class="fas fa-envelope"></i> aleemangroupofschools@gmail.com</li>
+                        <li><i class="far fa-clock"></i> Mon-Fri: 7:00 AM - 4:30 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates and news</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; <span id="currentYear"></span> Aleeman School. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+    let date = document.getElementById("currentYear");
+    date.innerHTML = new Date().getFullYear();
+</script>
+
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/admissions.js"></script>
+</body>
+</html> -->
